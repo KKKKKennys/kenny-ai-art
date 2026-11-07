@@ -61,4 +61,14 @@
  .wf-detail dl{display:block}.wf-detail dl>div+div{margin-top:12px}.wf-detail dt{font-size:10px;margin-bottom:3px}.wf-detail dd{font-size:12px}
  .wf-footer{display:block}.wf-footer a{display:inline-block;margin-top:16px}.wf-footer p{font-size:10px}
 }
+/* Portrait screens: keep each node compact instead of stretching across a tablet. */
+@media(max-width:899px) and (orientation:portrait){
+ .wf-canvas{max-width:500px;margin-inline:auto}
+ .wf-board{max-width:400px;margin-inline:auto;gap:12px}
+ .wf-node{min-height:84px;padding:10px 12px 10px 44px}
+ .wf-node-top{top:14px;left:13px}
+ .wf-name{font-size:16px}
+ .wf-role{font-size:11px;margin:3px 0 4px}
+ .wf-tag{font-size:8px}
+}
 @media(prefers-reduced-motion:reduce){.workflow-feature .wf-wire-active{animation:none!important}.wf-node{transition:none}}
