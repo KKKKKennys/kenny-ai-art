@@ -23,6 +23,15 @@ const server = http.createServer((req, res) => {
 (async () => {
   let browser;
   const results = [];
+  const layoutFailures = [];
+  async function inspectOverflow(page, label, measurement) {
+    if (measurement.content <= measurement.viewport + 1) return;
+    const elements = await page.evaluate(() => [...document.querySelectorAll("body *")].map(el => { const r = el.getBoundingClientRect(); const c = getComputedStyle(el); return { tag: el.tagName, id: el.id, class: String(el.className), left: r.left, right: r.right, width: r.width, cssWidth: c.width, minWidth: c.minWidth, overflowX: c.overflowX, display: c.display }; }).filter(e => e.width && e.display !== "none" && (e.right > innerWidth + 1 || e.left < -1)).slice(0,100));
+    const issue = { label, measurement, elements };
+    layoutFailures.push(issue);
+    console.log("OVERFLOW_DIAGNOSTICS", JSON.stringify(issue));
+    fs.writeFileSync(path.join(output, `overflow-${label}-${measurement.viewport}.json`), JSON.stringify(issue,null,2));
+  }
   try {
     await new Promise(resolve => server.listen(8877, '127.0.0.1', resolve));
     browser = await chromium.launch();
@@ -38,7 +47,7 @@ const server = http.createServer((req, res) => {
       assert.deepEqual(homeImages, [], 'Homepage images must load');
       await page.evaluate(() => document.fonts.ready);
       const overflow = await page.evaluate(() => ({ viewport: innerWidth, content: document.documentElement.scrollWidth }));
-      assert.ok(overflow.content <= overflow.viewport + 1, JSON.stringify(overflow));
+      await inspectOverflow(page, 'home', overflow);
       await page.locator('#skills').scrollIntoViewIfNeeded();
       await page.locator('.scene-craft-feature').screenshot({ path: path.join(output, `featured-card-${viewport.width}.png`) });
       await page.screenshot({ path: path.join(output, `portfolio-skills-${viewport.width}.png`) });
@@ -48,7 +57,7 @@ const server = http.createServer((req, res) => {
       await page.waitForFunction(() => [...document.images].every(i => i.complete && i.naturalWidth));
       assert.equal(await page.locator('.catalog-list li').count(), 40);
       const detailOverflow = await page.evaluate(() => ({ viewport: innerWidth, content: document.documentElement.scrollWidth }));
-      assert.ok(detailOverflow.content <= detailOverflow.viewport + 1, JSON.stringify(detailOverflow));
+      await inspectOverflow(page, 'detail', detailOverflow);
       await page.screenshot({ path: path.join(output, `scene-craft-${viewport.width}.png`), fullPage: true });
       await page.getByRole('link', { name: '浏览 40 项技能 ↓' }).click();
       await page.waitForURL(url => url.hash === '#catalog');
@@ -78,7 +87,8 @@ const server = http.createServer((req, res) => {
       results.push({ viewport, homeOverflow: overflow, detailOverflow, imagesLoaded: true, catalogCount: 40, newCardAndAnchors: true, oldSkillLinks: true, resumeHash: expectedResume, javascriptErrors: errors });
       await page.close();
     }
-    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ passed: true, results }, null, 2));
+    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ passed: layoutFailures.length === 0, results, layoutFailures }, null, 2));
+    assert.equal(layoutFailures.length, 0, 'Horizontal overflow findings require correction; see diagnostics');
   } catch (error) {
     if (browser) {
       for (const context of browser.contexts()) {
@@ -87,7 +97,7 @@ const server = http.createServer((req, res) => {
         }
       }
     }
-    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ passed: false, results, error: String(error), stack: error.stack }, null, 2));
+    fs.writeFileSync(path.join(output, 'results.json'), JSON.stringify({ passed: false, results, layoutFailures, error: String(error), stack: error.stack }, null, 2));
     throw error;
   } finally {
     if (browser) await browser.close();
