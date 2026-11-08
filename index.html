@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>李铿 Kenny · LightAI 技术美术作品集</title>
-<meta name="description" content="李铿 Kenny，2027 届技术美术（LightAI）实习方向。五个完整三维项目，以及 Blender 资产流程与 50 张运镜卡的开源 Skills 实践。">
+<meta name="description" content="李铿 Kenny，2027 届技术美术（LightAI）实习方向。五个完整三维项目、40 个独立场景技能、2 项其他专项 Skills 与 50 张运镜卡。">
 <meta name="theme-color" content="#05080f">
 <link rel="preload" href="assets/fonts/unbounded-sub.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/hero-1600.webp" fetchpriority="high" media="(max-width: 899px)"
@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="assets/navigation.css?v=20261031-contact-preview-2">
 <link rel="stylesheet" href="assets/lightai.css?v=20261107-role10">
 <link rel="stylesheet" href="assets/skill-entry.css?v=20261107-skills-v2">
+<link rel="stylesheet" href="assets/scene-craft.css?v=20261108">
 <link rel="stylesheet" href="assets/workflow-map.css?v=20261107-role11">
 </head>
 <body>
@@ -53,7 +54,7 @@
     <a data-project-jump data-label="聚光灯精灵" href="#sprite"><b>04</b><span>聚光灯精灵</span></a>
     <a data-project-jump data-label="夜间办公室" href="#office"><b>05</b><span>夜间办公室</span></a>
   </nav>
-  <a class="rail-skills" href="#skills"><span>↗</span> 开源 Skills</a>
+  <a class="rail-skills" href="#skills"><span>↗</span> Agent Skills</a>
   <a class="rail-resources" href="#resources"><span>↓</span> 作品资料</a>
 </aside>
 
@@ -88,7 +89,7 @@
       </div>
       <div class="fit-pillars">
         <div class="fit-pillar"><span class="fit-pillar-index">01 / ART</span><h3>三维制作</h3><p>场景 · 硬表面 · PBR<br>灯光 · 绑定与动画</p><span class="fit-pillar-tail">Blender 为核心的制作实践</span></div>
-        <div class="fit-pillar"><span class="fit-pillar-index">02 / SKILLS</span><h3>经验复用</h3><p>资产整理流程<br>三维展示镜头卡</p><span class="fit-pillar-tail"><b>2</b> 项开源 Skill <i>／</i> <b>50</b> 张镜头卡</span></div>
+        <div class="fit-pillar"><span class="fit-pillar-index">02 / SKILLS</span><h3>经验复用</h3><p>场景技能 · 资产整理<br>三维展示镜头卡</p><span class="fit-pillar-tail"><b>40</b> 个场景技能 <i>／</i> <b>2</b> 项其他专项 Skills<br><b>50</b> 张镜头卡</span></div>
       </div>
     </div>
     <div class="fit-toolbox">
@@ -461,10 +462,21 @@
 <!-- LightAI：沿用原站视觉，展示 Skill 与真实实践证据 -->
 <section class="lightai-skills wrap" id="skills" aria-labelledby="skills-title">
   <div class="skill-heading reveal">
-    <p class="eyebrow">AI Workflow &amp; Open-source Skills</p>
+    <p class="eyebrow">Agent Skills</p>
     <h2 id="skills-title">Agent Skills · 让制作经验可复用</h2>
     <p class="skill-intro">围绕三维美术制作，拆解需求、组织 AI 协作并检查输出；把重复遇到的问题整理为指令、参考规则与交付规范。</p>
   </div>
+  <article class="glass skill-card scene-craft-feature reveal" aria-labelledby="scene-craft-title">
+    <div><div class="skill-meta"><span>FEATURED / SCENE CRAFT</span><span>40 INDEPENDENT SKILLS</span></div>
+      <h3 id="scene-craft-title">Kenny Scene Craft</h3><p class="skill-subtitle">把场景制作拆成 40 个可独立调用的工作流程。</p>
+      <p class="skill-description">面向环境、道具、动画与资产交付，为每项任务编写独立的触发描述、制作步骤和验收要求。由 Kenny 在 AI 辅助下整理，供 Agent 按任务读取，不是全自动 Blender 插件。</p>
+      <ul class="scene-craft-counts" aria-label="技能分组"><li><b>12</b> 核心制作</li><li><b>8</b> 专项制作</li><li><b>9</b> 交付表现</li><li><b>11</b> 动态与风格</li></ul>
+      <p class="skill-scope"><strong>验证记录：</strong>15 项单元／包测试通过；使用 Blender 4.3.2 完成参考白模生成、渲染与只读场景审计。</p>
+      <div class="skill-v2-actions"><a class="skill-repo" href="skills/kenny-scene-craft.html">查看完整目录与验证范围 <span aria-hidden="true">↗</span></a></div>
+      <p class="skill-v2-note">V0.1.0 · 项目展示，源码暂未公开</p>
+    </div>
+    <figure><img src="assets/evidence/scene-craft-reference.png" width="720" height="540" loading="lazy" alt="Kenny Scene Craft 参考白模：青绿色研究站体块与橙色连接结构"><figcaption>参考白模 · 流程验证示例，非最终美术作品</figcaption></figure>
+  </article>
   <div class="skill-grid">
     <article class="glass skill-card reveal">
       <div class="skill-meta"><span>01 / ASSET PIPELINE</span><span>BLENDER</span></div>
@@ -540,7 +552,7 @@
       <div class="resource-panel" id="resource-files" role="group" aria-label="完整项目与个人简历">
         <div class="resource-panel-inner">
           <a class="resource-download" href="#nereid" data-project-jump><span class="document-icon" aria-hidden="true">WEB</span><span><b>完整项目展示</b><small>5 个项目 · 站内完整拆解</small></span><i aria-hidden="true">↑</i></a>
-          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261108-role15" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
+          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261108-scene-craft" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
         </div>
       </div>
       <p class="resource-hint">项目可直接在本站浏览；简历可下载保存或打印。</p>

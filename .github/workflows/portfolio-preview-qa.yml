@@ -1,0 +1,43 @@
+name: Portfolio preview QA
+on:
+  push:
+    branches:
+      - 'qa/scene-craft-*'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  responsive-preview:
+    if: startsWith(github.ref, 'refs/heads/qa/scene-craft-')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22'
+      - name: Install pinned test dependencies
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium
+          python -m pip install pypdf==5.4.0
+      - name: Verify responsive layouts and interactions
+        run: node tests/portfolio-qa.cjs
+      - name: Verify downloaded resumes contain two pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from pypdf import PdfReader
+          files = list(Path('qa-artifacts').glob('resume-*.pdf'))
+          assert len(files) == 2, 'Expected desktop and mobile downloads'
+          for file in files:
+              assert len(PdfReader(file).pages) == 2, f'{file}: expected two pages'
+          print('Both downloaded resumes contain two pages.')
+          PY
+      - name: Save screenshots and test evidence
+        if: always()
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: portfolio-preview-evidence
+          path: qa-artifacts/
+          retention-days: 7
