@@ -64,9 +64,13 @@ const server = http.createServer((req, res) => {
         await page.waitForURL('**/index.html#skills');
       }
       await page.locator('#resources').scrollIntoViewIfNeeded();
-      const pending = page.waitForEvent('download');
-      await page.locator('a.resource-download[href*="likeng-lightai-resume.pdf"]').click();
-      const download = await pending;
+      const folderToggle = page.locator('#folder-toggle');
+      if (await folderToggle.getAttribute('aria-expanded') !== 'true') await folderToggle.click();
+      await page.locator('a.resource-download[href*="likeng-lightai-resume.pdf"]').waitFor({ state: 'visible' });
+      const [download] = await Promise.all([
+        page.waitForEvent('download'),
+        page.locator('a.resource-download[href*="likeng-lightai-resume.pdf"]').click()
+      ]);
       const file = path.join(output, `resume-${viewport.width}.pdf`);
       await download.saveAs(file);
       assert.equal(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'), expectedResume);
