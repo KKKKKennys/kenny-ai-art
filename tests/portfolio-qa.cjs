@@ -51,9 +51,9 @@ const server = http.createServer((req, res) => {
       assert.ok(detailOverflow.content <= detailOverflow.viewport + 1, JSON.stringify(detailOverflow));
       await page.screenshot({ path: path.join(output, `scene-craft-${viewport.width}.png`), fullPage: true });
       await page.getByRole('link', { name: '浏览 40 项技能 ↓' }).click();
-      await page.waitForURL('**#catalog');
+      await page.waitForURL(url => url.hash === '#catalog');
       await page.getByRole('link', { name: '查看验证记录', exact: true }).click();
-      await page.waitForURL('**#validation');
+      await page.waitForURL(url => url.hash === '#validation');
       // Header navigation is intentionally hidden on mobile; both hero anchors remain usable.
       await page.locator('.back').click();
       await page.waitForURL('**/index.html#skills');
