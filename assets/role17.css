@@ -1,0 +1,22 @@
+/* Project titles already sit outside the media; keep the work at full brightness. */
+.project .opener .shade{display:none!important}
+.project .opener .frame.is-video.rv{opacity:1!important;transform:none!important;transition:none!important}
+#monkey>.project-heading{padding:80px var(--pad) 28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center}
+#monkey>.project-heading .num{font-family:Unbounded,sans-serif;font-size:clamp(62px,8vw,100px);font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1px var(--ink2)}
+#monkey>.project-heading h2{font-family:Unbounded,sans-serif;font-size:clamp(26px,3vw,40px);font-weight:800;line-height:1.15;margin:0}
+#monkey>.project-heading p{font-size:14px;color:var(--ink2);line-height:1.7;margin:15px 0 0}
+.monkey-hero,.monkey-finals figure,.monkey-process figure{margin:0;min-width:0}
+.monkey-showcase img{display:block;width:100%;height:auto;object-fit:contain;border-radius:18px;background:#303438}
+.monkey-showcase figcaption{font-size:14px;color:var(--ink2);margin-top:14px}
+.monkey-hero{margin-top:24px}.monkey-hero img{aspect-ratio:16/9}
+.monkey-finals{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:32px}
+.monkey-finals img{aspect-ratio:9/10}
+.monkey-process{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:38px;border-top:1px solid var(--line);padding-top:48px;margin-top:64px}
+.monkey-process img{aspect-ratio:4/3;background:#0b1018}
+.monkey-method h3,.monkey-film h3{font-size:clamp(21px,2.3vw,28px);line-height:1.5;margin:16px 0}
+.monkey-method p,.monkey-method dd,.monkey-film p{color:var(--ink2);font-size:15px;line-height:1.85}
+.monkey-method dl{margin:24px 0 0}.monkey-method dt{color:var(--accent);font-weight:600;margin-top:20px}.monkey-method dd{margin:7px 0 0}
+.monkey-film{border-top:1px solid var(--line);margin-top:64px;padding-top:40px}.monkey-film video{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;border-radius:18px;background:#303438;margin-top:24px}.monkey-film a{color:var(--accent);font-size:14px}
+@media(max-width:899px){.monkey-finals{gap:16px}.monkey-process{grid-template-columns:1fr;gap:26px;margin-top:42px;padding-top:32px}.monkey-film{margin-top:40px;padding-top:28px}.monkey-showcase figcaption{font-size:12px}}
+@media(max-width:480px){.monkey-finals{grid-template-columns:1fr;gap:28px}}
+@media(max-width:899px){#monkey>.project-heading{padding-top:64px;grid-template-columns:1fr;gap:20px}#monkey>.project-heading h2{font-size:clamp(24px,4.5vw,36px)}}

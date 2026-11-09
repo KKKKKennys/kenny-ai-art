@@ -50,7 +50,6 @@
 
   // ---------- 视频：轻量预览、加载反馈、显式完整版与可见性控制 ----------
   const videos = [...document.querySelectorAll('video.bgv')];
-  let soundOn = true;
   let current = null;
   const visible = (v) => {
     if (document.hidden) return false;
@@ -107,7 +106,7 @@
     v._wantPlay = true;
     const request = ++v._request;
     const active = () => request === v._request && current === v && v._wantPlay && visible(v);
-    v.muted = !(v._btn && soundOn);
+    v.muted = !(v._btn && v._soundOn);
     label(v);
     if (v.readyState < 3) status(v, 'loading');
     v.play().then(() => {
@@ -132,6 +131,8 @@
     v._btn = stage.querySelector('.snd');
     v._fullBtn = stage.querySelector('.full');
     v._request = 0;
+    // Respect each video's initial muted attribute; sound choices do not spill into other projects.
+    v._soundOn = !v.hasAttribute('muted');
     // 给视频容器也保留内嵌预览，即使浏览器尚未绘制 poster 也有画面。
     v._frame.style.background = v.style.background;
     label(v);
@@ -158,8 +159,8 @@
     });
     if (v._btn) v._btn.addEventListener('click', (event) => {
       event.stopPropagation();
-      soundOn = v.muted;
-      if (soundOn) playVideo(v);
+      v._soundOn = v.muted;
+      if (v._soundOn) playVideo(v);
       else { v.muted = true; label(v); }
     });
   });
@@ -176,7 +177,7 @@
   // 只把点按和按键视为开声操作，滑动手势本身不抢声音。
   const unlock = (event) => {
     if (event.target.closest && event.target.closest('.vctl, .loading, .project-progress, .project-rail, .resource-folder')) return;
-    if (soundOn && current && current._btn && current.muted && !current.paused) playVideo(current);
+    if (current && current._soundOn && current._btn && current.muted && !current.paused) playVideo(current);
   };
   ['click', 'keydown'].forEach((type) => document.addEventListener(type, unlock, true));
   document.addEventListener('WeixinJSBridgeReady', () => { if (current) playVideo(current); });

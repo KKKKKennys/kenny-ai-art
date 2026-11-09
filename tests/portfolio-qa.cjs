@@ -7,7 +7,7 @@ const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'qa-artifacts');
 fs.mkdirSync(output, { recursive: true });
-const expectedResume = '7cbd332bc3c072cbd1c787ddc69306abfa401ba9f2ea4cd15ae4b9c290f61f0d';
+const expectedResume = '6fbe8fb1e13c5110daac77556f4732173f4e5303c9cf9e24466ebbc9ffb66ae7';
 const server = http.createServer((req, res) => {
   const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
   let file = path.resolve(root, '.' + pathname);
