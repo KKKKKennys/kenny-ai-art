@@ -56,13 +56,15 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => document.fonts.ready);
       await page.waitForFunction(() => [...document.images].every(i => i.complete && i.naturalWidth));
       assert.equal(await page.locator('.catalog-list li').count(), 40);
+      assert.equal(await page.locator('#catalog h2').textContent(), '40 项独立场景 Skill');
+      assert.equal(await page.locator('img[src*="scene-craft-reference"], #validation').count(), 0);
       const detailOverflow = await page.evaluate(() => ({ viewport: innerWidth, content: document.documentElement.scrollWidth }));
       await inspectOverflow(page, 'detail', detailOverflow);
       await page.screenshot({ path: path.join(output, `scene-craft-${viewport.width}.png`), fullPage: true });
       await page.getByRole('link', { name: '浏览 40 项技能 ↓' }).click();
       await page.waitForURL(url => url.hash === '#catalog');
-      await page.getByRole('link', { name: '查看验证记录', exact: true }).click();
-      await page.waitForURL(url => url.hash === '#validation');
+      await page.getByRole('link', { name: '查看调用方式', exact: true }).click();
+      await page.waitForURL(url => url.hash === '#usage');
       // Header navigation is intentionally hidden on mobile; both hero anchors remain usable.
       await page.locator('.back').click();
       await page.waitForURL('**/index.html#skills');
