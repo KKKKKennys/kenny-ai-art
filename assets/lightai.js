@@ -3,7 +3,7 @@
   const mobile = matchMedia('(max-width: 899px)');
   document.addEventListener('click', event => {
     if (!mobile.matches || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    const link = event.target.closest('a[href="#technical-practice"], a[href="#asset-plan-case"], a[href="#timeline-case"], a[href="#skills"], a[href="#workflow-case"], a[href="#nereid-center-reveal"], a[href="#ak50-shot-cards"], a[href="#nereid-shot-sequence"]');
+    const link = event.target.closest('a[href="#skills"], a[href="#workflow-case"], a[href="#nereid-center-reveal"], a[href="#ak50-shot-cards"], a[href="#nereid-shot-sequence"]');
     if (!link) return;
     const target = document.querySelector(link.getAttribute('href'));
     if (!target) return;
