@@ -1,3 +1,4 @@
+# Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT.
 name: Portfolio preview QA
 on:
   push:

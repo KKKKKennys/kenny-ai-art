@@ -1,135 +1,200 @@
-/* Interaction patterns adapted from Rare UI. Copyright (c) 2026 Swami Malode.
-   Vanilla implementation for Kenny's portfolio; see rare-ui-LICENSE.txt. */
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 (() => {
-  const root = document.documentElement;
-  const toggle = document.getElementById('project-toggle');
-  const menu = document.getElementById('project-menu');
-  const rail = document.querySelector('.project-rail');
-  const railList = rail.querySelector('.rail-list');
-  const railLinks = [...railList.querySelectorAll('a[data-project-jump]')];
-  const allLinks = [...document.querySelectorAll('a[data-project-jump]')];
-  const label = toggle.querySelector('.project-label');
-  const count = toggle.querySelector('.project-count');
-  const current = toggle.querySelector('.project-current');
-  const compact = matchMedia('(max-width: 1099px)');
-  const sections = railLinks.map(a => ({
-    id: a.hash.slice(1), label: a.dataset.label, node: document.getElementById(a.hash.slice(1))
-  }));
-  const about = document.getElementById('about');
-  const skills = document.getElementById('skills');
-  const resources = document.getElementById('resources');
-  const contact = document.getElementById('contact');
+  'use strict';
+
+  const page = document.documentElement;
+  const trigger = document.getElementById('project-toggle');
+  const popup = document.getElementById('project-menu');
+  const sidebar = document.querySelector('.project-rail');
+  const list = sidebar?.querySelector('.rail-list');
+  const narrowScreen = window.matchMedia('(width < 1100px)');
+  const projectLinks = Array.from(list?.querySelectorAll('a[data-project-jump]') || []);
+  const projects = projectLinks.map((link, index) => ({
+    element: document.getElementById(link.hash.substring(1)),
+    link,
+    number: index + 1,
+    title: link.dataset.label || link.textContent.trim(),
+  })).filter(project => project.element);
+  let menuScrollOrigin = 0;
+
+  function closeMenu(returnFocus = false) {
+    if (!trigger || !popup) return;
+    popup.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-label', '打开项目导航');
+    if (returnFocus) trigger.focus({preventScroll: true});
+  }
+
+  if (trigger && popup) {
+    trigger.addEventListener('click', () => {
+      if (!popup.hidden) {
+        closeMenu();
+        return;
+      }
+      if (!narrowScreen.matches) return;
+      menuScrollOrigin = window.scrollY;
+      popup.hidden = false;
+      trigger.setAttribute('aria-expanded', 'true');
+      trigger.setAttribute('aria-label', '收起项目导航');
+    });
+    document.addEventListener('pointerdown', event => {
+      if (!event.target.closest('.project-progress')) closeMenu();
+    });
+    document.addEventListener('focusin', event => {
+      if (!event.target.closest('.project-progress')) closeMenu();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !popup.hidden) closeMenu(true);
+    });
+    popup.addEventListener('click', event => {
+      if (event.target.closest('a')) closeMenu();
+    });
+    narrowScreen.addEventListener('change', () => closeMenu());
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState !== 'visible') closeMenu();
+    });
+  }
+
+  // Phone jumps bypass the intervening galleries and recheck the landing once
+  // lazy media has established its height. Any new user gesture cancels this.
+  let pendingJump = 0;
+  const phone = window.matchMedia('(max-width: 899px)');
+  const clearPendingJump = () => { pendingJump += 1; };
+  document.addEventListener('wheel', clearPendingJump, {passive: true});
+  document.addEventListener('touchstart', clearPendingJump, {passive: true});
+  document.addEventListener('pointerdown', clearPendingJump, {passive: true});
+  document.addEventListener('keydown', clearPendingJump);
+  document.addEventListener('click', event => {
+    if (!phone.matches || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest('a[data-project-jump]');
+    const target = link && document.getElementById(link.hash.substring(1));
+    if (!target) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    closeMenu();
+    const jump = ++pendingJump;
+    const land = () => {
+      if (jump === pendingJump) target.scrollIntoView({block: 'start', behavior: 'instant'});
+    };
+    land();
+    requestAnimationFrame(land);
+    [180, 480, 950].forEach(delay => setTimeout(land, delay));
+  }, true);
+
   const folder = document.querySelector('.resource-folder');
-  const folderToggle = document.getElementById('folder-toggle');
-  const files = document.getElementById('resource-files');
-  let openAt = 0;
-  let active = '';
-  let bounds = [];
-  let aboutTop = 0;
-  let skillTop = 0;
-  let resourceTop = 0;
-  let contactTop = 0;
-  let queued = false;
-  let measureQueued = false;
-  let directionY = scrollY;
-
-  function setMenu(open, restoreFocus = false) {
-    if (open && !compact.matches) return;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? '收起项目导航' : '打开项目导航');
-    menu.hidden = !open;
-    if (open) openAt = scrollY;
-    if (!open && restoreFocus) toggle.focus({ preventScroll: true });
+  const folderButton = document.getElementById('folder-toggle');
+  const downloads = document.getElementById('resource-files');
+  function showDownloads(visible) {
+    if (!folder || !folderButton || !downloads) return;
+    folder.classList.toggle('is-open', visible);
+    folderButton.setAttribute('aria-expanded', String(visible));
+    downloads.setAttribute('aria-hidden', String(!visible));
+    downloads.inert = !visible;
+    const text = folderButton.querySelector('.folder-action > span');
+    if (text) text.textContent = visible ? '收起资料夹' : '打开资料夹';
   }
-  toggle.addEventListener('click', () => setMenu(menu.hidden));
-  document.addEventListener('pointerdown', e => {
-    if (!menu.hidden && !e.target.closest('.project-progress')) setMenu(false);
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !menu.hidden) setMenu(false, true);
-  });
-  document.addEventListener('focusin', e => {
-    if (!menu.hidden && !e.target.closest('.project-progress')) setMenu(false);
-  });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-  compact.addEventListener('change', () => setMenu(false));
-  document.addEventListener('visibilitychange', () => { if (document.hidden) setMenu(false); });
-
-  function setFolder(open) {
-    folder.classList.toggle('is-open', open);
-    folderToggle.setAttribute('aria-expanded', String(open));
-    folderToggle.querySelector('.folder-action > span').textContent = open ? '收起资料夹' : '打开资料夹';
-    files.inert = !open;
-    files.setAttribute('aria-hidden', String(!open));
+  if (folderButton) {
+    folderButton.addEventListener('click', () => {
+      showDownloads(folderButton.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('click', event => {
+      const link = event.target.closest('a[href="#resources"]');
+      if (link) showDownloads(true);
+    });
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#resources') showDownloads(true);
+    });
+    showDownloads(location.hash === '#resources');
   }
-  folderToggle.addEventListener('click', () => setFolder(!folder.classList.contains('is-open')));
-  document.querySelectorAll('a[href="#resources"]').forEach(a => a.addEventListener('click', () => setFolder(true)));
-  setFolder(false);
-  root.classList.add('navigation-ready');
 
-  function update() {
-    queued = false;
-    const y = scrollY;
-    if (!menu.hidden && Math.abs(y - openAt) > 24) setMenu(false);
-    if (Math.abs(y - directionY) > 24) {
-      rail.style.setProperty('--rail-direction', y > directionY ? '180deg' : '0deg');
-      directionY = y;
+  const landmarks = [
+    ...projects.map(project => ({
+      element: project.element,
+      title: project.title,
+      caption: `${String(project.number).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}`,
+      project,
+    })),
+    {id: 'about', title: '关于我', caption: 'ABOUT KENNY'},
+    {id: 'skills', title: 'Agent Skills', caption: 'SKILLS'},
+    {id: 'resources', title: '作品资料', caption: '02 FILES'},
+    {id: 'contact', title: '联系我', caption: 'LET’S TALK'},
+  ].map(item => ({...item, element: item.element || document.getElementById(item.id)}))
+    .filter(item => item.element);
+  let positions = [];
+  let scheduled = false;
+  let previousY = window.scrollY;
+  let currentId = null;
+
+  function renderPosition() {
+    scheduled = false;
+    const y = window.scrollY;
+    if (popup && !popup.hidden && Math.abs(y - menuScrollOrigin) > 30) closeMenu();
+    if (sidebar && Math.abs(y - previousY) > 4) {
+      sidebar.style.setProperty('--rail-direction', y > previousY ? '180deg' : '0deg');
+      previousY = y;
     }
-    const reading = y + Math.min(innerHeight * .32, 240);
-    let index = -1;
-    for (let i = 0; i < bounds.length; i++) if (reading >= bounds[i]) index = i;
-    const atAbout = reading >= aboutTop;
-    const atSkills = reading >= skillTop;
-    const atResources = reading >= resourceTop;
-    const atContact = reading >= contactTop;
-    const next = atContact ? 'contact' : atResources ? 'resources' : atSkills ? 'skills' : atAbout ? 'about' : index < 0 ? 'overview' : sections[index].id;
-    if (next === active) return;
-    active = next;
-    const selected = atAbout || index < 0 ? -1 : index;
-    allLinks.forEach(a => {
-      const on = a.hash === '#' + next;
-      if (on) a.setAttribute('aria-current', 'location');
-      else a.removeAttribute('aria-current');
-    });
-    railLinks.forEach((a, i) => a.classList.toggle('is-past', i < index || atAbout));
-    const n = selected < 0 ? '' : String(selected + 1).padStart(2, '0');
-    count.textContent = atContact ? 'LET’S TALK' : atResources ? '02 ITEMS' : atSkills ? '03 SKILLS' : atAbout ? 'ABOUT KENNY' : n ? n + ' / ' + String(sections.length).padStart(2, '0') : sections.length + ' 个项目';
-    label.textContent = atContact ? '联系我' : atResources ? '作品资料' : atSkills ? 'Agent Skills' : atAbout ? '关于我' : selected < 0 ? '作品导览' : sections[selected].label;
-    current.classList.remove('is-changing');
-    requestAnimationFrame(() => current.classList.add('is-changing'));
-    rail.classList.toggle('has-project', selected >= 0);
-    const dot = railLinks[Math.max(0, selected)];
-    if (selected >= 0 && dot) {
-      const center = dot.offsetTop + dot.offsetHeight / 2;
-      rail.style.setProperty('--rail-y', (center - 8.5) + 'px');
-      rail.style.setProperty('--rail-fill', Math.max(0, center - 26) + 'px');
-    } else rail.style.setProperty('--rail-fill', atAbout ? '100%' : '0px');
-    document.querySelectorAll('.rail-skills, .menu-skills').forEach(a => {
-      if (atSkills && !atResources) a.setAttribute('aria-current', 'location');
-      else a.removeAttribute('aria-current');
-    });
-    document.querySelectorAll('.rail-resources').forEach(a => {
-      if (atResources && !atContact) a.setAttribute('aria-current', 'location');
-      else a.removeAttribute('aria-current');
+    const readingLine = y + Math.min(220, window.innerHeight / 3);
+    let chosen = null;
+    for (const entry of positions) {
+      if (entry.top > readingLine) break;
+      chosen = entry.item;
+    }
+    const selectedId = chosen?.element.id || 'top';
+    if (selectedId === currentId) return;
+    currentId = selectedId;
+
+    document.querySelectorAll('[data-project-jump], .rail-skills, .menu-skills, .rail-resources')
+      .forEach(link => {
+        if (link.hash === '#' + selectedId) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    const title = trigger?.querySelector('.project-label');
+    const count = trigger?.querySelector('.project-count');
+    const selectedText = chosen?.title || '作品导览';
+    if (title) title.textContent = selectedText;
+    if (count) count.textContent = chosen?.caption || `${projects.length} 个项目`;
+
+    const selectedProject = chosen?.project;
+    const completedProjects = selectedProject
+      ? selectedProject.number - 1
+      : chosen ? projects.length : 0;
+    projects.forEach((project, i) => project.link.classList.toggle('is-past', i < completedProjects));
+    sidebar?.classList.toggle('has-project', Boolean(selectedProject));
+    if (sidebar && selectedProject) {
+      const target = selectedProject.link;
+      const center = target.offsetTop + target.offsetHeight / 2;
+      sidebar.style.setProperty('--rail-y', `${center - 9}px`);
+      sidebar.style.setProperty('--rail-fill', `${Math.max(0, center - 26)}px`);
+    } else if (sidebar) {
+      sidebar.style.setProperty('--rail-fill', chosen ? '100%' : '0px');
+    }
+  }
+
+  function schedulePosition() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(renderPosition);
+  }
+  let layoutPending = false;
+  function scheduleLayout() {
+    if (layoutPending) return;
+    layoutPending = true;
+    requestAnimationFrame(() => {
+      layoutPending = false;
+      const origin = window.scrollY;
+      positions = landmarks.map(item => ({
+        item,
+        top: origin + item.element.getBoundingClientRect().top,
+      })).sort((a, b) => a.top - b.top);
+      currentId = null;
+      schedulePosition();
     });
   }
-  function scheduleUpdate() { if (!queued) { queued = true; requestAnimationFrame(update); } }
-  function measure() {
-    measureQueued = false;
-    bounds = sections.map(s => s.node.getBoundingClientRect().top + scrollY);
-    aboutTop = about.getBoundingClientRect().top + scrollY;
-    skillTop = skills.getBoundingClientRect().top + scrollY;
-    resourceTop = resources.getBoundingClientRect().top + scrollY;
-    contactTop = contact.getBoundingClientRect().top + scrollY;
-    active = '';
-    update();
-  }
-  function scheduleMeasure() { if (!measureQueued) { measureQueued = true; requestAnimationFrame(measure); } }
-  window.addEventListener('scroll', scheduleUpdate, { passive: true });
-  window.addEventListener('resize', scheduleMeasure, { passive: true });
-  window.addEventListener('load', scheduleMeasure);
-  if (document.fonts) document.fonts.ready.then(scheduleMeasure);
-  if (window.ResizeObserver) new ResizeObserver(scheduleMeasure).observe(document.body);
-  if (location.hash === '#resources') setFolder(true);
-  measure();
+  window.addEventListener('scroll', schedulePosition, {passive: true});
+  window.addEventListener('resize', scheduleLayout, {passive: true});
+  window.addEventListener('load', scheduleLayout);
+  if (document.fonts) document.fonts.ready.then(scheduleLayout);
+  if ('ResizeObserver' in window) new ResizeObserver(scheduleLayout).observe(document.body);
+  page.classList.add('navigation-ready');
+  scheduleLayout();
 })();

@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 /* Keep long role-evidence jumps precise in the lightweight mobile layout. */
 (() => {
   const mobile = matchMedia('(max-width: 899px)');

@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');

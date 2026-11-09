@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 /* Site-native workflow map: no canvas runtime or external assets. */
 .workflow-feature{margin-bottom:110px;scroll-margin-top:110px}
 .wf-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}

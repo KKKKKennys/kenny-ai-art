@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 /* A workflow explanation, not a live execution console. */
 (() => {
   const root = document.getElementById('ai-workflow');

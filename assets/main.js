@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 // 李铿 Kenny 作品集网页
 // 电脑：平滑滚动 + 滚动驱动动效（每帧给 .scene 写 --p，具体怎么动在 style.css）
 // 手机（窄屏）：不钉住、不做逐帧动画，只用进入视口时的淡入，横向内容用原生横滑
@@ -167,27 +168,16 @@
 
   // ================= 以下只在电脑上运行 =================
 
-  // 平滑滚动（滚轮）
-  let lenis = null;
-  const startSmoothScroll = () => {
-    if (!window.Lenis || lenis) return;
-    lenis = new Lenis({ duration: 1.15, smoothWheel: true });
-    root.classList.add('lenis');
-  };
-  if (window.Lenis) startSmoothScroll();
-  else {
-    const script = document.createElement('script');
-    script.src = 'assets/lib/lenis.min.js';
-    script.onload = startSmoothScroll;
-    document.head.appendChild(script);
-  }
+  // This site uses its own desktop scroll controller.
+  const scrollDriver = window.KennyPortfolioScroll
+    ? new window.KennyPortfolioScroll() : null;
   document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (ev) => {
     const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
     ev.preventDefault();
     const opener = a.hasAttribute('data-project-jump') && target.querySelector('.opener');
     const offset = opener ? Math.max(0, opener.offsetHeight - window.innerHeight) * .22 : 0;
-    if (lenis) lenis.scrollTo(target, { duration: 1.2, offset });
+    if (scrollDriver) scrollDriver.scrollTo(target, { duration: 1.2, offset });
     else window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY + offset, behavior: 'smooth' });
   }));
 
@@ -217,7 +207,7 @@
       s._p = -1;
     });
     docMax = Math.max(1, root.scrollHeight - vh);
-    if (lenis) lenis.resize();
+    if (scrollDriver) scrollDriver.resize();
   }
 
   function setSteps(s, p) {
@@ -235,8 +225,8 @@
 
   let lastY = -1;
   function frame(t) {
-    if (lenis) lenis.raf(t);
-    const y = lenis ? lenis.animatedScroll : window.scrollY;
+    if (scrollDriver) scrollDriver.advance(t);
+    const y = window.scrollY;
     if (y !== lastY) {
       lastY = y;
       for (const s of scenes) {

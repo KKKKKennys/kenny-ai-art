@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 /* 李铿 Kenny 作品集网页：暗色电影感 + 玻璃卡片，手机优先
    滚动动效：JS 给每个 .scene 写入 --p（0→1 的滚动进度），这里用它算位移／缩放／透明度 */
 
@@ -33,10 +34,6 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 ol, ul { list-style: none; }
 
-/* Lenis 推荐样式 */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-stopped { overflow: hidden; }
 
 .glass {
   background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04) 60%, rgba(255,255,255,.08)),

@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 /* Project titles already sit outside the media; keep the work at full brightness. */
 .project .opener .shade{display:none!important}
 .project .opener .frame.is-video.rv{opacity:1!important;transform:none!important;transition:none!important}

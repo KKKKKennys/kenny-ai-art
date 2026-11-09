@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 (() => {
   const prompts = {
     'blender-asset-pipeline': '请安装 Blender Asset Pipeline v2.0.0：\nhttps://github.com/KKKKKennys/blender-asset-pipeline\n先阅读 INSTALL.md，安装到当前 Agent 的用户技能目录；已有同名版本先备份再升级。\n完成后告诉我版本、路径和调用方式，仅安装，不操作工程。',

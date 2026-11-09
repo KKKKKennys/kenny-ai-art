@@ -1,2 +1,3 @@
+/* Copyright (c) 2026 Kenny / 李铿. SPDX-License-Identifier: MIT. */
 .scene-craft-feature{display:block;margin:30px 0 22px}.scene-craft-feature>div{min-width:0}.scene-craft-counts{display:flex;flex-wrap:wrap;gap:10px 20px;list-style:none;margin:22px 0;padding:0;font-size:12px;color:#afbed2}.scene-craft-counts b{color:#a7c9ff;font-size:20px;margin-right:4px}.fit-pillar-tail{line-height:1.9}.scene-craft-feature .skill-meta{flex-wrap:wrap;gap:8px}@media(max-width:899px){.scene-craft-feature .skill-meta{font-size:9px}}
 @media(max-width:899px) and (prefers-reduced-motion:reduce){.steps .captions{padding-inline:var(--pad)}.steps .captions li{left:auto;right:auto}}
