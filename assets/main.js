@@ -8,7 +8,10 @@
   const mobile = mql.matches;
   root.classList.add('js');
   // 跨过手机／电脑分界（比如平板转屏）时整页重载，两套布局不混用
-  if (mql.addEventListener) mql.addEventListener('change', () => location.reload());
+  if (mql.addEventListener) mql.addEventListener('change', () => {
+    if (document.fullscreenElement || document.pictureInPictureElement || [...document.querySelectorAll('video')].some(v => !v.paused || v.currentTime > 0 || v.webkitDisplayingFullscreen)) return;
+    location.reload();
+  });
 
   // 字体就绪后再播开场字母动画，避免先闪一下系统字体
   // 网速慢时最多等 1.2 秒，字体还没到就先用系统字体显示，不让 KENNY 一直空着
@@ -48,144 +51,30 @@
   }, { rootMargin: '150% 0px 150% 0px' });
   document.querySelectorAll('img[loading="lazy"]').forEach((img) => early.observe(img));
 
-  // ---------- 视频：轻量预览、加载反馈、显式完整版与可见性控制 ----------
-  const videos = [...document.querySelectorAll('video.bgv')];
-  let current = null;
-  const visible = (v) => {
-    if (document.hidden) return false;
-    const r = v.getBoundingClientRect();
-    const w = Math.max(0, Math.min(r.right, innerWidth) - Math.max(r.left, 0));
-    const h = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
-    return r.width > 0 && r.height > 0 && w * h / (r.width * r.height) >= 0.5;
-  };
-  const label = (v) => {
-    if (!v._btn) return;
-    v._btn.textContent = v.muted ? '开声音' : '静音';
-    v._btn.setAttribute('aria-pressed', String(!v.muted));
-  };
-  const pickRes = (v) => mobile ? (v.dataset.mobileResolution || (v._full ? '720' : 'm480')) :
-    (innerWidth * (devicePixelRatio || 1) >= 1400 ? '1080' : '720');
-  function status(v, state) {
-    clearTimeout(v._waitTimer);
-    v._frame.dataset.state = state;
-    v._frame.setAttribute('aria-busy', String(state === 'loading' || state === 'slow'));
-    v._status.disabled = state === 'loading';
-    v._status.querySelector('span').textContent = ({
-      loading: '视频加载中，请稍等', slow: '网络较慢，点此重试',
-      error: '视频加载失败，点此重试', blocked: '点此播放'
-    })[state] || '';
-    if (state === 'loading') v._waitTimer = setTimeout(() => status(v, 'slow'), 15000);
-    if (v._fullBtn && !v._fullBtn.hidden) {
-      v._fullBtn.disabled = state === 'loading' && !!v._full;
-      v._fullBtn.textContent = v._full ? (state === 'error' || state === 'slow' ? '重试完整版' : '完整版加载中…') : '看完整版';
-    }
-  }
-  function load(v, force = false) {
-    if (v.getAttribute('src') && !force) return;
-    stopVideo(v);
-    status(v, 'loading');
-    v.preload = 'auto';
-    const resolution = pickRes(v);
-    const revision = resolution === 'm480' && v.dataset.previewVersion;
-    v.src = v.dataset.src + '-' + resolution + '.mp4' + (revision ? '?v=' + encodeURIComponent(revision) : '');
-    v.load();
-  }
-  function stopVideo(v) {
-    v._request = (v._request || 0) + 1;
-    v._wantPlay = false;
-    v.pause();
-    v.muted = true;
-    label(v);
-    if (current === v) current = null;
-  }
-  function playVideo(v) {
-    if (!visible(v)) return;
-    load(v);
-    videos.forEach((other) => { if (other !== v && (other._wantPlay || !other.paused)) stopVideo(other); });
-    current = v;
-    v._wantPlay = true;
-    const request = ++v._request;
-    const active = () => request === v._request && current === v && v._wantPlay && visible(v);
-    v.muted = !(v._btn && v._soundOn);
-    label(v);
-    if (v.readyState < 3) status(v, 'loading');
-    v.play().then(() => {
-      if (!active()) { if (request === v._request) stopVideo(v); return; }
-      label(v);
-    }).catch((error) => {
-      if (!active() || error.name === 'AbortError') return;
-      if (error.name !== 'NotAllowedError') { status(v, 'error'); return; }
-      v.muted = true;
-      label(v);
-      v.play().catch((fallbackError) => {
-        if (active() && fallbackError.name !== 'AbortError') {
-          status(v, v.error || fallbackError.name !== 'NotAllowedError' ? 'error' : 'blocked');
-        }
-      });
-    });
-  }
-  videos.forEach((v) => {
-    const stage = v.closest('.stage');
-    v._frame = v.closest('.frame');
-    v._status = v._frame.querySelector('.loading');
-    v._btn = stage.querySelector('.snd');
-    v._fullBtn = stage.querySelector('.full');
-    v._request = 0;
-    // Respect each video's initial muted attribute; sound choices do not spill into other projects.
-    v._soundOn = !v.hasAttribute('muted');
-    // 给视频容器也保留内嵌预览，即使浏览器尚未绘制 poster 也有画面。
-    v._frame.style.background = v.style.background;
-    label(v);
-    v.addEventListener('loadeddata', () => { if (v.readyState >= 2) status(v, 'ready'); });
-    v.addEventListener('canplay', () => status(v, 'ready'));
-    v.addEventListener('playing', () => {
-      if (current !== v || !v._wantPlay || !visible(v)) { stopVideo(v); return; }
-      status(v, 'ready');
-      if (v._full && v._fullBtn) {
-        v._fullBtn.hidden = true;
-        stage.querySelector('.preview-note').textContent = '完整版';
-      }
-    });
-    v.addEventListener('waiting', () => { if (v._wantPlay && visible(v)) status(v, 'loading'); });
-    v.addEventListener('error', () => { if (v.getAttribute('src')) status(v, 'error'); });
-    v._status.addEventListener('click', () => {
-      if (v.error || v._frame.dataset.state === 'slow') load(v, true);
-      playVideo(v);
-    });
-    if (v._fullBtn) v._fullBtn.addEventListener('click', () => {
-      v._full = true;
-      load(v, true);
-      playVideo(v);
-    });
-    if (v._btn) v._btn.addEventListener('click', (event) => {
-      event.stopPropagation();
-      v._soundOn = v.muted;
-      if (v._soundOn) playVideo(v);
-      else { v.muted = true; label(v); }
+  // Native controls own play, pause, seeking, volume, playback rate and fullscreen.
+  const videos = [...document.querySelectorAll('video')];
+  const detachedPlayback = (video) => document.fullscreenElement === video ||
+    document.pictureInPictureElement === video || video.webkitDisplayingFullscreen;
+  videos.forEach((video) => {
+    video.controls = true;
+    video.removeAttribute('autoplay');
+    video.addEventListener('play', () => {
+      videos.forEach((other) => { if (other !== video) other.pause(); });
     });
   });
-  const pre = new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) { load(e.target); pre.unobserve(e.target); }
-  }, { rootMargin: '50% 0px 50% 0px' });
-  const vis = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.intersectionRatio >= 0.5 && !document.hidden) playVideo(e.target);
-      else stopVideo(e.target);
-    }
-  }, { threshold: [0, 0.5] });
-  videos.forEach((v) => { pre.observe(v); vis.observe(v); });
-  // 只把点按和按键视为开声操作，滑动手势本身不抢声音。
-  const unlock = (event) => {
-    if (event.target.closest && event.target.closest('.vctl, .loading, .project-progress, .project-rail, .resource-folder')) return;
-    if (current && current._soundOn && current._btn && current.muted && !current.paused) playVideo(current);
-  };
-  ['click', 'keydown'].forEach((type) => document.addEventListener(type, unlock, true));
-  document.addEventListener('WeixinJSBridgeReady', () => { if (current) playVideo(current); });
+  // Going offscreen pauses playback, but returning never overrides a user's pause.
+  const videoVisibility = new IntersectionObserver((entries) => {
+    entries.forEach(({target, isIntersecting}) => {
+      if (!isIntersecting && !detachedPlayback(target)) target.pause();
+    });
+  }, {threshold: 0});
+  videos.forEach((video) => videoVisibility.observe(video));
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) videos.forEach(stopVideo);
-    else { const v = videos.find(visible); if (v) playVideo(v); }
+    if (document.hidden) videos.forEach((video) => {
+      if (!detachedPlayback(video)) video.pause();
+    });
   });
-  window.addEventListener('pagehide', () => videos.forEach(stopVideo));
+  window.addEventListener('pagehide', () => videos.forEach((video) => video.pause()));
 
   // ---------- 拖动对比 ----------
   function setX(el, pct) {

@@ -1,0 +1,13 @@
+/* Give native video controls an unobstructed media surface on every screen. */
+.project .opener.has-player{height:auto;min-height:0;padding-bottom:38px}
+.project .opener.has-player>.stage{position:relative;top:auto;height:auto;min-height:0;display:flex;flex-direction:column;gap:24px;padding:76px var(--pad) 0;overflow:visible}
+.project .opener.has-player .project-heading{position:static;display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;margin:0;width:100%}
+.project .opener.has-player .num,.project .opener.has-player .title{position:static;transform:none;opacity:1;min-width:0}
+.project .opener.has-player .num{font-size:clamp(60px,7vw,96px);line-height:1}
+.project .opener.has-player .title h2{font-size:clamp(23px,3vw,40px);line-height:1.15;overflow-wrap:anywhere}
+.project .opener.has-player .frame.is-video{position:relative;inset:auto;width:100%;height:auto;min-height:0;margin:0;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#05080f}
+.project .opener.has-player .frame video{position:static;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;transform:none;will-change:auto;pointer-events:auto}
+.project .opener.has-player .info{position:static;inset:auto;display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:22px;width:100%;margin:0;opacity:1;transform:none;border-radius:18px}
+.project .opener.has-player .rv{opacity:1!important;transform:none!important;transition:none!important}
+video:fullscreen{width:100vw!important;height:100vh!important;max-width:none!important;object-fit:contain!important;border-radius:0!important;background:#000!important}
+@media(max-width:899px){.project .opener.has-player>.stage{padding-top:48px;gap:22px}.project .opener.has-player .project-heading{grid-template-columns:1fr;gap:16px}.project .opener.has-player .title{margin:0}.project .opener.has-player .title h2{font-size:clamp(21px,4.3vw,34px)}.project .opener.has-player .num{font-size:64px}.project .opener.has-player .info{grid-template-columns:1fr;gap:15px}.project .opener.has-player .frame.is-video{border-radius:16px}}

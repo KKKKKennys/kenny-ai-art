@@ -22,6 +22,9 @@
 <link rel="stylesheet" href="assets/role16.css?v=20261109-role18">
 
 <link rel="stylesheet" href="assets/role17.css?v=20261109-role18">
+
+
+<link rel="stylesheet" href="assets/role20.css?v=20261109-role20">
 </head>
 <body>
 <div class="progress" aria-hidden="true"><i></i></div>
@@ -118,8 +121,8 @@
       <svg class="wf-wires" aria-hidden="true" focusable="false"><defs><marker id="wf-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="currentColor" stroke-width="1.1"/></marker></defs><g class="wf-paths"></g></svg>
       <button type="button" class="wf-node wf-human" id="wf-brief" data-wf-index="0" aria-pressed="true" aria-controls="wf-detail" style="--wf-col:1;--wf-row:1"><span class="wf-node-top"><span class="wf-number">01</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">我</span><span class="wf-role">提出需求与创作方向</span><span class="wf-tag">CREATIVE DIRECTION</span></button>
       <button type="button" class="wf-node wf-agent" id="wf-plan" data-wf-index="1" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:2;--wf-row:1"><span class="wf-node-top"><span class="wf-number">02</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">Claude Code</span><span class="wf-role">主脑 · 拆解与统筹</span><span class="wf-tag">ORCHESTRATOR</span></button>
-      <button type="button" class="wf-node wf-agent" id="wf-generate" data-wf-index="2" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:3;--wf-row:1"><span class="wf-node-top"><span class="wf-number">03</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">Codex CLI</span><span class="wf-role">执行批量生图任务</span><span class="wf-tag">GPT-6 ASTRA</span></button>
-      <button type="button" class="wf-node wf-tool" id="wf-images" data-wf-index="3" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:4;--wf-row:1"><span class="wf-node-top"><span class="wf-number">04</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">生图后端</span><span class="wf-role">GPT-Image2.6 / ComfyUI</span><span class="wf-tag">IMAGE GENERATION</span></button>
+      <button type="button" class="wf-node wf-agent" id="wf-generate" data-wf-index="2" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:3;--wf-row:1"><span class="wf-node-top"><span class="wf-number">03</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">Codex CLI</span><span class="wf-role">编辑 ComfyUI 批量生图工作流<br>或调用 GPT Image</span><span class="wf-tag">GPT-6 ASTRA</span></button>
+      <button type="button" class="wf-node wf-tool" id="wf-images" data-wf-index="3" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:4;--wf-row:1"><span class="wf-node-top"><span class="wf-number">04</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">ComfyUI / GPT Image</span><span class="wf-role">按设定批量生成候选图片</span><span class="wf-tag">IMAGE GENERATION</span></button>
       <button type="button" class="wf-node wf-human" id="wf-approval" data-wf-index="4" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:5;--wf-row:1"><span class="wf-node-top"><span class="wf-number">05</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">我</span><span class="wf-role">审核图片 · 确认风格</span><span class="wf-tag">HUMAN APPROVAL</span></button>
       <button type="button" class="wf-node wf-agent" id="wf-dispatch" data-wf-index="5" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:5;--wf-row:2"><span class="wf-node-top"><span class="wf-number">06</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">Claude Code</span><span class="wf-role">接收确认 · 派发三维任务</span><span class="wf-tag">ORCHESTRATOR</span></button>
       <button type="button" class="wf-node wf-agent" id="wf-model" data-wf-index="6" aria-pressed="false" aria-controls="wf-detail" style="--wf-col:4;--wf-row:2"><span class="wf-node-top"><span class="wf-number">07</span><span class="wf-port" aria-hidden="true"></span></span><span class="wf-name">Codex CLI</span><span class="wf-role">执行三维制作任务</span><span class="wf-tag">GPT-6 ASTRA</span></button>
@@ -134,22 +137,22 @@
     </div>
   </div>
   <div class="wf-footer"><p><span>验证进展</span> 已实现候选登记、审批、状态管理与任务调度程序。原生生图与 3 张概念图登记已有实测记录。Claude Code 主导的完整链路、指定生图后端及 Blender 三维串联待验证。</p><a href="https://github.com/KKKKKennys/ai-asset-workflow" target="_blank" rel="noopener noreferrer">查看工作流项目 <span aria-hidden="true">↗</span></a></div>
-  <script type="application/json" id="wf-node-data">[{"id": "brief", "name": "我", "role": "提出需求与创作方向", "tag": "CREATIVE DIRECTION", "kind": "human", "input": "项目目标、使用场景与参考风格。", "process": "决定做什么、服务什么画面，明确资产清单、视觉方向和交付要求。", "output": "一份明确的创作需求，交给 Claude Code。"}, {"id": "plan", "name": "Claude Code", "role": "主脑 · 拆解与统筹", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我的需求、参考资料与资产清单。", "process": "统一风格约束，将任务拆成可执行批次，为 Codex CLI 准备提示词、输出位置与检查要求。", "output": "生图任务包与执行顺序。"}, {"id": "generate", "name": "Codex CLI", "role": "执行批量生图任务", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 下发的生图任务包。", "process": "按任务调用可用的生图后端，组织批量输出，并登记图片、提示词和生成结果。", "output": "候选图片与执行回执，返回 Claude Code 汇总。"}, {"id": "images", "name": "生图后端", "role": "GPT-Image2.6 / ComfyUI", "tag": "IMAGE GENERATION", "kind": "tool", "input": "风格约束、道具描述与所需视图。", "process": "根据接入方式选择一个后端生成候选图，保持同组资产的形状语言、配色与材质方向。", "output": "同一风格的场景或道具设计图，供我审核。"}, {"id": "approval", "name": "我", "role": "审核图片 · 确认风格", "tag": "HUMAN APPROVAL", "kind": "human", "input": "Claude Code 汇总的候选图与生成记录。", "process": "检查风格统一性、结构可读性和制作可行性。不满意时把修改意见交给 Claude Code，重新安排生图；确认后进入三维制作。", "output": "选定图片、修改意见与明确确认记录。"}, {"id": "dispatch", "name": "Claude Code", "role": "接收确认 · 派发三维任务", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我确认的设计图与具体要求。", "process": "固定本次使用的参考版本，将形体、分件、材质、场景组织和交付要求整理成建模任务包。", "output": "三维制作任务，交由 Codex CLI 执行。"}, {"id": "model", "name": "Codex CLI", "role": "执行三维制作任务", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 派发的建模任务与参考图。", "process": "拆解 Blender 操作步骤，通过 MCP 调用工具；根据回传的场景信息和预览定位问题并调整。", "output": "场景操作、阶段预览和执行记录。"}, {"id": "mcp", "name": "MCP 连接", "role": "把任务传给 Blender", "tag": "TOOL CONNECTION", "kind": "tool", "input": "Codex 发出的工具调用。", "process": "连接 Agent 与 Blender，传递建模或脚本指令，并将软件执行结果回传给 Codex。", "output": "可回查的操作结果、场景状态与预览。"}, {"id": "blender", "name": "Blender", "role": "建模 · 材质 · 输出", "tag": "3D PRODUCTION", "kind": "tool", "input": "已确认的参考图及制作指令。", "process": "按参考制作形体与结构，配置材质，检查比例和连接关系；保留可编辑工程，再输出所需文件。", "output": "模型、预览图、可编辑工程与导出文件。"}, {"id": "review", "name": "我", "role": "查看成果 · 确认交付", "tag": "FINAL REVIEW", "kind": "human", "input": "经 Codex 回报、由 Claude Code 汇总的模型预览与交付清单。", "process": "对照需求检查效果与完整性，提出修改意见；由 Claude Code 继续调度修订，直到满足本次交付要求。", "output": "确认后的三维资产，连同过程记录归档。"}]</script>
+  <script type="application/json" id="wf-node-data">[{"id": "brief", "name": "我", "role": "提出需求与创作方向", "tag": "CREATIVE DIRECTION", "kind": "human", "input": "项目目标、使用场景与参考风格。", "process": "决定做什么、服务什么画面，明确资产清单、视觉方向和交付要求。", "output": "一份明确的创作需求，交给 Claude Code。"}, {"id": "plan", "name": "Claude Code", "role": "主脑 · 拆解与统筹", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我的需求、参考资料与资产清单。", "process": "统一风格约束，将任务拆成可执行批次，为 Codex CLI 准备提示词、输出位置与检查要求。", "output": "生图任务包与执行顺序。"}, {"id": "generate", "name": "Codex CLI", "role": "编辑 ComfyUI 批量生图工作流，或调用 GPT Image", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 下发的生图任务包。", "process": "按任务配置 ComfyUI 的批量生图工作流，或调用 GPT Image；整理提示词、参数与生成结果。", "output": "候选图片与执行回执，返回 Claude Code 汇总。"}, {"id": "images", "name": "ComfyUI / GPT Image", "role": "按设定批量生成候选图片", "tag": "IMAGE GENERATION", "kind": "tool", "input": "风格约束、道具描述与所需视图。", "process": "按配置的工作流或调用参数批量出图，保持同组图片的风格、配色和材质方向。", "output": "同一风格的场景或道具设计图，供我审核。"}, {"id": "approval", "name": "我", "role": "审核图片 · 确认风格", "tag": "HUMAN APPROVAL", "kind": "human", "input": "Claude Code 汇总的候选图与生成记录。", "process": "检查风格统一性、结构可读性和制作可行性。不满意时把修改意见交给 Claude Code，重新安排生图；确认后进入三维制作。", "output": "选定图片、修改意见与明确确认记录。"}, {"id": "dispatch", "name": "Claude Code", "role": "接收确认 · 派发三维任务", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我确认的设计图与具体要求。", "process": "固定本次使用的参考版本，将形体、分件、材质、场景组织和交付要求整理成建模任务包。", "output": "三维制作任务，交由 Codex CLI 执行。"}, {"id": "model", "name": "Codex CLI", "role": "执行三维制作任务", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 派发的建模任务与参考图。", "process": "拆解 Blender 操作步骤，通过 MCP 调用工具；根据回传的场景信息和预览定位问题并调整。", "output": "场景操作、阶段预览和执行记录。"}, {"id": "mcp", "name": "MCP 连接", "role": "把任务传给 Blender", "tag": "TOOL CONNECTION", "kind": "tool", "input": "Codex 发出的工具调用。", "process": "连接 Agent 与 Blender，传递建模或脚本指令，并将软件执行结果回传给 Codex。", "output": "可回查的操作结果、场景状态与预览。"}, {"id": "blender", "name": "Blender", "role": "建模 · 材质 · 输出", "tag": "3D PRODUCTION", "kind": "tool", "input": "已确认的参考图及制作指令。", "process": "按参考制作形体与结构，配置材质，检查比例和连接关系；保留可编辑工程，再输出所需文件。", "output": "模型、预览图、可编辑工程与导出文件。"}, {"id": "review", "name": "我", "role": "查看成果 · 确认交付", "tag": "FINAL REVIEW", "kind": "human", "input": "经 Codex 回报、由 Claude Code 汇总的模型预览与交付清单。", "process": "对照需求检查效果与完整性，提出修改意见；由 Claude Code 继续调度修订，直到满足本次交付要求。", "output": "确认后的三维资产，连同过程记录归档。"}]</script>
 </section>
 
 <!-- 目录 -->
 
 <!-- 01 NEREID -->
 <article class="project" id="nereid">
-  <section class="opener scene">
+  <section class="opener scene has-player">
     <div class="stage">
-<header class="project-heading"><div class="num">01</div><div class="title"><h2>NEREID<br>DEEP-SEA RESEARCH STATION</h2><p>NEREID 深海科研站 · 个人项目 · 2026.10</p></div><div class="vctl"><a class="glass film-link" href="assets/video/nereid-v56-1080.mp4" target="_blank" rel="noopener" aria-label="打开 NEREID V56 1080P 完整短片">1080P 完整播放 ↗</a><button class="glass snd" type="button" aria-pressed="true">静音</button></div></header>
+<header class="project-heading"><div class="num">01</div><div class="title"><h2>NEREID<br>DEEP-SEA RESEARCH STATION</h2><p>NEREID 深海科研站 · 个人项目 · 2026.10</p></div></header>
       <div class="frame is-video">
-        <video style="background:#05080f" width="1920" height="1080" class="bgv" loop playsinline preload="none" poster="assets/video/nereid-v56-poster.webp" data-src="assets/video/nereid-v56" data-mobile-resolution="720" aria-label="NEREID 深海科研站 V56 展示短片"></video>
-        <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
+        <video style="background:#05080f" width="1920" height="1080" class="bgv" loop playsinline poster="assets/video/nereid-v56-poster.webp" data-src="assets/video/nereid-v56" aria-label="NEREID 深海科研站 V56 展示短片" controls muted preload="metadata"><source src="assets/video/nereid-v56-720.mp4" media="(max-width:899px)" type="video/mp4"><source src="assets/video/nereid-v56-1080.mp4" type="video/mp4"></video>
+
       </div>
 
-      <div class="shade"></div>
+
 
 
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Remotion</div><div><span>DELIVERY</span>9 个 4K 机位 · 1080P 展示短片</div><div><span>MY ROLE</span>参考拆解、与 Agent 配合调整场景、材质与灯光判断、多机位核对及后期验收。</div></div>
@@ -222,15 +225,15 @@
 
 <!-- 02 AK-50 -->
 <article class="project" id="ak50">
-  <section class="opener scene">
+  <section class="opener scene has-player">
     <div class="stage">
-<header class="project-heading"><div class="num">02</div><div class="title"><h2>AK-50<br>HARD-SURFACE WEAPON</h2><p>AK-50 硬表面武器展示 · 个人项目 · 2026.10</p></div><div class="vctl"><span class="preview-note">28 秒完整版</span><button class="glass snd" type="button">开声音</button></div></header>
+<header class="project-heading"><div class="num">02</div><div class="title"><h2>AK-50<br>HARD-SURFACE WEAPON</h2><p>AK-50 硬表面武器展示 · 个人项目 · 2026.10</p></div></header>
       <div class="frame is-video">
-        <video style="background:#0b1018 url(data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoYAA4APu1yrU+pp6QiMAgBMB2JZQC7AB6WS1Arzoye8sAA/vK0uF0X0acBUQJ4s3vMXQQ4Hc6HR42AFU1Thddq6yFEzQyTOzq2k636bG8NDz3ewT9Xr6zGSHwAAA==) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/ak50-poster.webp" data-src="assets/video/ak50" data-mobile-resolution="720" aria-label="AK-50 拆装动画"></video>
-        <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
+        <video style="background:#0b1018 url(data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoYAA4APu1yrU+pp6QiMAgBMB2JZQC7AB6WS1Arzoye8sAA/vK0uF0X0acBUQJ4s3vMXQQ4Hc6HR42AFU1Thddq6yFEzQyTOzq2k636bG8NDz3ewT9Xr6zGSHwAAA==) center/cover no-repeat" width="1920" height="1080" class="bgv" loop playsinline poster="assets/video/ak50-poster.webp" data-src="assets/video/ak50" aria-label="AK-50 拆装动画" controls muted preload="metadata"><source src="assets/video/ak50-720.mp4" media="(max-width:899px)" type="video/mp4"><source src="assets/video/ak50-1080.mp4" type="video/mp4"></video>
+
       </div>
 
-      <div class="shade"></div>
+
 
 
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Substance Painter · Python</div><div><span>DELIVERY</span>8 张 4K 静帧 · 28 秒 4K 拆装动画</div><div><span>MY ROLE</span>结构分件、Agent 辅助脚本迭代、PBR 材质、拆装与运镜编排，以及运动过程检查。</div></div>
@@ -316,15 +319,15 @@
 
 
 <article class="project" id="sprite">
-  <section class="opener scene">
+  <section class="opener scene has-player">
     <div class="stage">
-<header class="project-heading"><div class="num">04</div><div class="title"><h2>SPOTLIGHT<br>SPRITE</h2><p>聚光灯精灵 · 原创吉祥物 IP · 2026.10</p></div><div class="vctl"><span class="preview-note">10 秒预览</span><button class="glass full" type="button">看完整版</button><button class="glass snd" type="button">开声音</button></div></header>
+<header class="project-heading"><div class="num">04</div><div class="title"><h2>SPOTLIGHT<br>SPRITE</h2><p>聚光灯精灵 · 原创吉祥物 IP · 2026.10</p></div></header>
       <div class="frame is-video">
-        <video style="background:#0b1018 url(data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAwAwCdASoYAA4APu1iqU2ppaQiMAgBMB2JaQAAetChog8AAP7wt0i2AmHU79MbDxngLzeMAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/sprite-poster.webp" data-src="assets/video/sprite" aria-label="聚光灯精灵展示短片"></video>
-        <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
+        <video style="background:#0b1018 url(data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAwAwCdASoYAA4APu1iqU2ppaQiMAgBMB2JaQAAetChog8AAP7wt0i2AmHU79MbDxngLzeMAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" loop playsinline poster="assets/video/sprite-poster.webp" data-src="assets/video/sprite" aria-label="聚光灯精灵展示短片" controls muted preload="metadata"><source src="assets/video/sprite-720.mp4" media="(max-width:899px)" type="video/mp4"><source src="assets/video/sprite-1080.mp4" type="video/mp4"></video>
+
       </div>
 
-      <div class="shade"></div>
+
 
 
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Remotion / React</div><div><span>DELIVERY</span>原创 IP · 机械绑定与 8 种表情 · 4K 卡点短片</div><div><span>MY ROLE</span>角色结构设定、与 Agent 配合调整模型和绑定、动作检查、镜头组织及后期节奏编排。</div></div>
@@ -446,14 +449,14 @@
 
 <!-- 05 办公室 -->
 <article class="project" id="office">
-  <section class="opener scene">
+  <section class="opener scene has-player">
     <div class="stage">
 <header class="project-heading"><div class="num">06</div><div class="title"><h2>NIGHT<br>OFFICE</h2><p>夜间室内办公室 · 个人项目 · 2026.10</p></div></header>
       <div class="frame is-video">
-        <video style="background:#0b1018 url(data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAwCdASoYAA4APu1iqk2ppaQiMAgBMB2JaQAAetETwKyBgAD+8Fw4frMV7ZDBqWKmmz+G14uerycKrvDATkVhS0unbLxEyjHJI8+B7Q03m4UBTQtZJyAAAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/office-poster.webp" data-src="assets/video/office" aria-label="夜间办公室运镜动画"></video>
-        <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
+        <video style="background:#0b1018 url(data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAwCdASoYAA4APu1iqk2ppaQiMAgBMB2JaQAAetETwKyBgAD+8Fw4frMV7ZDBqWKmmz+G14uerycKrvDATkVhS0unbLxEyjHJI8+B7Q03m4UBTQtZJyAAAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" loop playsinline poster="assets/video/office-poster.webp" data-src="assets/video/office" aria-label="夜间办公室运镜动画" controls muted preload="metadata"><source src="assets/video/office-720.mp4" media="(max-width:899px)" type="video/mp4"><source src="assets/video/office-1080.mp4" type="video/mp4"></video>
+
       </div>
-      <div class="shade"></div>
+
 
 
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · FFmpeg</div><div><span>DELIVERY</span>3 张 4K 静帧 · 夜景运镜 · 白模与材质分层输出</div><div><span>MY ROLE</span>参考与镜头拆解、与 Agent 配合调整场景、夜景灯光迭代，以及模型／材质／灯光分层核查。</div></div>
@@ -575,8 +578,8 @@
       <p class="resource-intro">作品集与个人简历，可下载保存或打印。</p>
       <div class="resource-panel" id="resource-files" role="group" aria-label="完整项目与个人简历">
         <div class="resource-panel-inner">
-          <a class="resource-download" href="assets/files/likeng-lightai-portfolio.pdf?v=20261109-role19" download="深职大李铿技术美术作品集.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>作品集 PDF</b><small>26 页 · 六项作品与制作流程</small></span><i aria-hidden="true">↓</i></a>
-          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261109-role19" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
+          <a class="resource-download" href="assets/files/likeng-lightai-portfolio.pdf?v=20261109-role20" download="深职大李铿技术美术作品集.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>作品集 PDF</b><small>26 页 · 六项作品与制作流程</small></span><i aria-hidden="true">↓</i></a>
+          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261109-role20" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
         </div>
       </div>
       <p class="resource-hint">作品可在本站浏览，PDF 便于保存、打印与转阅。</p>
@@ -605,7 +608,7 @@
 </main>
 <footer><span>李铿 KENNY — LIGHTAI PORTFOLIO 2026</span><div class="footer-actions"><a class="back-to-top" href="#top">回到顶部 ↑</a><a href="https://rareui.com" target="_blank" rel="noopener noreferrer">Interactions inspired by Rare UI ↗</a></div></footer>
 
-<script defer src="assets/main.js?v=20261109-role18"></script>
+<script defer src="assets/main.js?v=20261109-role20"></script>
 <script defer src="assets/navigation.js?v=20261109-role18"></script>
 <script defer src="assets/lightai.js?v=20261109-role18"></script>
 <script defer src="assets/skill-pages.js?v=20261107-skills-v2"></script>
