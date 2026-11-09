@@ -93,8 +93,8 @@
     });
     railLinks.forEach((a, i) => a.classList.toggle('is-past', i < index || atAbout));
     const n = selected < 0 ? '' : String(selected + 1).padStart(2, '0');
-    count.textContent = atContact ? 'LET’S TALK' : atResources ? '02 ITEMS' : atSkills ? '02 SKILLS' : atAbout ? 'ABOUT KENNY' : n ? n + ' / 05' : '5 个项目';
-    label.textContent = atContact ? '联系我' : atResources ? '作品资料' : atSkills ? '开源 Skills' : atAbout ? '关于我' : selected < 0 ? '作品导览' : sections[selected].label;
+    count.textContent = atContact ? 'LET’S TALK' : atResources ? '02 ITEMS' : atSkills ? '03 SKILLS' : atAbout ? 'ABOUT KENNY' : n ? n + ' / ' + String(sections.length).padStart(2, '0') : sections.length + ' 个项目';
+    label.textContent = atContact ? '联系我' : atResources ? '作品资料' : atSkills ? 'Agent Skills' : atAbout ? '关于我' : selected < 0 ? '作品导览' : sections[selected].label;
     current.classList.remove('is-changing');
     requestAnimationFrame(() => current.classList.add('is-changing'));
     rail.classList.toggle('has-project', selected >= 0);

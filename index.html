@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>李铿 Kenny · LightAI 技术美术作品集</title>
-<meta name="description" content="李铿 Kenny，2027 届技术美术（LightAI）实习方向。五个完整三维项目、40 个独立场景技能、2 项其他专项 Skills 与 50 张运镜卡。">
+<meta name="description" content="李铿 Kenny，2027 届技术美术（LightAI）实习方向。六个三维制作项目（含猴头纯手工雕刻）、40 个独立场景技能、2 项其他专项 Skills 与 50 张运镜卡。">
 <meta name="theme-color" content="#05080f">
 <link rel="preload" href="assets/fonts/unbounded-sub.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/img/hero-1600.webp" fetchpriority="high" media="(max-width: 899px)"
@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="assets/skill-entry.css?v=20261107-skills-v2">
 <link rel="stylesheet" href="assets/scene-craft.css?v=20261109-catalog">
 <link rel="stylesheet" href="assets/workflow-map.css?v=20261107-role11">
+
+
+<link rel="stylesheet" href="assets/role16.css?v=20261109-role16">
 </head>
 <body>
 <div class="progress" aria-hidden="true"><i></i></div>
@@ -25,18 +28,17 @@
   <div class="project-progress">
     <button class="project-toggle" id="project-toggle" type="button" aria-expanded="false" aria-controls="project-menu" aria-label="打开项目导航">
       <svg class="project-ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-track" cx="18" cy="18" r="14"/><circle class="ring-value" cx="18" cy="18" r="14" pathLength="100"/></svg>
-      <span class="project-current"><span class="project-count">5 个项目</span><span class="project-label">作品导览</span></span>
+      <span class="project-current"><span class="project-count">6 个项目</span><span class="project-label">作品导览</span></span>
       <svg class="project-chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m6 8 4 4 4-4"/></svg>
     </button>
     <div class="project-menu" id="project-menu" hidden data-lenis-prevent>
       <div class="project-menu-heading"><span>SELECTED WORK</span><span>2026</span></div>
-      <nav aria-label="快速跳转项目">
-        <a data-project-jump href="#nereid"><b>01</b><span>深海科研站<small>场景 · 外观与室内</small></span><i>↗</i></a>
-        <a data-project-jump href="#ak50"><b>02</b><span>AK-50<small>硬表面 · 拆装动画</small></span><i>↗</i></a>
-        <a data-project-jump href="#studio"><b>03</b><span>幻想风工作室<small>场景 · 私单</small></span><i>↗</i></a>
-        <a data-project-jump href="#sprite"><b>04</b><span>聚光灯精灵<small>原创 IP · 角色动画</small></span><i>↗</i></a>
-        <a data-project-jump href="#office"><b>05</b><span>夜间办公室<small>场景 · 夜景灯光</small></span><i>↗</i></a>
-      </nav>
+      <nav aria-label="快速跳转项目"><a data-project-jump href="#nereid"><b>01</b><span>深海科研站<small>场景 · 外观与室内</small></span><i>↗</i></a>
+<a data-project-jump href="#ak50"><b>02</b><span>AK-50<small>硬表面 · 拆装动画</small></span><i>↗</i></a>
+<a data-project-jump href="#monkey"><b>03</b><span>猴头雕刻<small>纯手工 · 正视白模</small></span><i>↗</i></a>
+<a data-project-jump href="#sprite"><b>04</b><span>聚光灯精灵<small>原创 IP · 角色动画</small></span><i>↗</i></a>
+<a data-project-jump href="#studio"><b>05</b><span>幻想风工作室<small>场景 · 私单</small></span><i>↗</i></a>
+<a data-project-jump href="#office"><b>06</b><span>夜间办公室<small>场景 · 夜景灯光</small></span><i>↗</i></a></nav>
       <nav class="menu-extra" aria-label="工作流与个人简历"><a class="menu-entry menu-skills" href="#skills"><b>AI</b><span>AI 工作流与 Skills<small>开源精神，降本增效</small></span><i>↗</i></a><a class="menu-entry" href="#resources"><b>PDF</b><span>个人简历<small>两页简历 · 下载与打印</small></span><i>↗</i></a></nav>
     </div>
   </div>
@@ -45,15 +47,15 @@
 
 <aside class="project-rail" aria-label="项目目录">
   <a href="#nereid" data-project-jump class="rail-heading"><span>SELECTED</span><span>WORK / 2026</span></a>
-  <nav class="rail-list" aria-label="五个作品">
+  <nav class="rail-list" aria-label="六个作品">
     <div class="rail-track" aria-hidden="true"><i></i></div>
     <span class="rail-marker" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 20.5 21 12 17.5 3.5 21z"/></svg></span>
     <a data-project-jump data-label="深海科研站" href="#nereid"><b>01</b><span>深海科研站</span></a>
-    <a data-project-jump data-label="AK-50" href="#ak50"><b>02</b><span>AK-50</span></a>
-    <a data-project-jump data-label="幻想风工作室" href="#studio"><b>03</b><span>幻想风工作室</span></a>
-    <a data-project-jump data-label="聚光灯精灵" href="#sprite"><b>04</b><span>聚光灯精灵</span></a>
-    <a data-project-jump data-label="夜间办公室" href="#office"><b>05</b><span>夜间办公室</span></a>
-  </nav>
+<a data-project-jump data-label="AK-50" href="#ak50"><b>02</b><span>AK-50</span></a>
+<a data-project-jump data-label="猴头雕刻" href="#monkey"><b>03</b><span>猴头雕刻</span></a>
+<a data-project-jump data-label="聚光灯精灵" href="#sprite"><b>04</b><span>聚光灯精灵</span></a>
+<a data-project-jump data-label="幻想风工作室" href="#studio"><b>05</b><span>幻想风工作室</span></a>
+<a data-project-jump data-label="夜间办公室" href="#office"><b>06</b><span>夜间办公室</span></a></nav>
   <a class="rail-skills" href="#skills"><span>↗</span> Agent Skills</a>
   <a class="rail-resources" href="#resources"><span>↓</span> 作品资料</a>
 </aside>
@@ -88,7 +90,7 @@
         <p class="fit-education"><b>2027 届 · 深圳职业技术大学</b><span>数字媒体与艺术设计</span></p>
       </div>
       <div class="fit-pillars">
-        <div class="fit-pillar"><span class="fit-pillar-index">01 / ART</span><h3>三维制作</h3><p>场景 · 硬表面 · PBR<br>灯光 · 绑定与动画</p><span class="fit-pillar-tail">Blender 为核心的制作实践</span></div>
+        <div class="fit-pillar"><span class="fit-pillar-index">01 / ART</span><h3>三维制作</h3><p>手工雕刻 · 场景 · 硬表面<br>PBR · 灯光 · 绑定与动画</p><span class="fit-pillar-tail">Blender 为核心的制作实践</span></div>
         <div class="fit-pillar"><span class="fit-pillar-index">02 / SKILLS</span><h3>经验复用</h3><p>场景技能 · 资产整理<br>三维展示镜头卡</p><span class="fit-pillar-tail"><b>40</b> 个场景 Skill <i>／</i> <b>2</b> 项其他专项 Skills<br><b>50</b> 张镜头卡</span></div>
       </div>
     </div>
@@ -98,9 +100,21 @@
     </div>
   </div>
 </section>
+<section class="technical-overview wrap" id="technical-practice" aria-labelledby="technical-title">
+      <p class="eyebrow">TECHNICAL PRACTICE · 现有工具与修订记录</p><h2 id="technical-title">把制作问题，落到具体的检查与修订。</h2>
+      <p>从资产计划到镜头时间线，整理制作约束，通过 AI 协作实现工具，并保留问题与检查结果。</p>
+      <div class="technical-cards">
+        <article class="technical-card glass reveal"><p class="eyebrow">01 / ASSET PLAN</p><h3>两个路径，指向同一个文件。</h3><p>检查输出位置的不同写法，避免计划遗漏路径冲突。</p><code>props/a.glb</code><code>./props/a.glb</code><p><a href="#asset-plan-case">查看问题与修订 →</a></p></article>
+        <article class="technical-card glass reveal"><p class="eyebrow">02 / TIMELINE CHECK</p><h3>让帧区间与配对图层对得上。</h3><p>检查排序、画幅和帧率，配合实际画面核对镜头衔接。</p><code>帧区间</code><code>双层对齐</code><p><a href="#timeline-case">查看检查规则 →</a></p></article>
+      </div></section>
+
+
+
+
+
 
 <section class="workflow-feature wrap" id="ai-workflow" aria-labelledby="ai-workflow-title">
-  <div class="wf-heading"><div><p class="eyebrow">Human-led · Agent Workflow</p><h2 id="ai-workflow-title">我定方向，AI 协同制作。</h2></div><span class="wf-status">流程设计</span></div>
+  <div class="wf-heading"><div><p class="eyebrow">Human-led · Agent Workflow</p><h2 id="ai-workflow-title">我定方向，AI 协同制作。</h2></div><span class="wf-status">程序已实现 · 局部验证</span></div>
   <p class="wf-intro">我与 Claude Code 沟通，由它统筹 Codex 和各制作工具。先批量生成设计图，经我确认，再进入 Blender 三维制作。</p>
   <div class="wf-canvas">
     <div class="wf-toolbar"><span><i class="wf-dot wf-human-dot"></i>我的判断 <i class="wf-dot wf-agent-dot"></i>Agent 与工具</span><span class="wf-hint">点击节点，查看分工 <span aria-hidden="true">↙</span></span></div>
@@ -123,7 +137,7 @@
       <dl><div><dt>输入</dt><dd>项目目标、使用场景与参考风格。</dd></div><div><dt>处理</dt><dd>决定做什么、服务什么画面，明确资产清单、视觉方向和交付要求。</dd></div><div><dt>输出</dt><dd>一份明确的创作需求，交给 Claude Code。</dd></div></dl>
     </div>
   </div>
-  <div class="wf-footer"><p><span>验证进展</span> 原生生图与图片登记已实测；Claude Code 统筹、指定生图后端及 Blender 串联为流程设计。</p><a href="https://github.com/KKKKKennys/ai-asset-workflow" target="_blank" rel="noopener noreferrer">查看工作流项目 <span aria-hidden="true">↗</span></a></div>
+  <div class="wf-footer"><p><span>验证进展</span> 已实现候选登记、审批、状态管理与任务调度程序。原生生图与 3 张概念图登记已有实测记录。Claude Code 主导的完整链路、指定生图后端及 Blender 三维串联待验证。</p><a href="https://github.com/KKKKKennys/ai-asset-workflow" target="_blank" rel="noopener noreferrer">查看工作流项目 <span aria-hidden="true">↗</span></a></div>
   <script type="application/json" id="wf-node-data">[{"id": "brief", "name": "我", "role": "提出需求与创作方向", "tag": "CREATIVE DIRECTION", "kind": "human", "input": "项目目标、使用场景与参考风格。", "process": "决定做什么、服务什么画面，明确资产清单、视觉方向和交付要求。", "output": "一份明确的创作需求，交给 Claude Code。"}, {"id": "plan", "name": "Claude Code", "role": "主脑 · 拆解与统筹", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我的需求、参考资料与资产清单。", "process": "统一风格约束，将任务拆成可执行批次，为 Codex CLI 准备提示词、输出位置与检查要求。", "output": "生图任务包与执行顺序。"}, {"id": "generate", "name": "Codex CLI", "role": "执行批量生图任务", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 下发的生图任务包。", "process": "按任务调用可用的生图后端，组织批量输出，并登记图片、提示词和生成结果。", "output": "候选图片与执行回执，返回 Claude Code 汇总。"}, {"id": "images", "name": "生图后端", "role": "GPT-Image2.6 / ComfyUI", "tag": "IMAGE GENERATION", "kind": "tool", "input": "风格约束、道具描述与所需视图。", "process": "根据接入方式选择一个后端生成候选图，保持同组资产的形状语言、配色与材质方向。", "output": "同一风格的场景或道具设计图，供我审核。"}, {"id": "approval", "name": "我", "role": "审核图片 · 确认风格", "tag": "HUMAN APPROVAL", "kind": "human", "input": "Claude Code 汇总的候选图与生成记录。", "process": "检查风格统一性、结构可读性和制作可行性。不满意时把修改意见交给 Claude Code，重新安排生图；确认后进入三维制作。", "output": "选定图片、修改意见与明确确认记录。"}, {"id": "dispatch", "name": "Claude Code", "role": "接收确认 · 派发三维任务", "tag": "ORCHESTRATOR", "kind": "agent", "input": "我确认的设计图与具体要求。", "process": "固定本次使用的参考版本，将形体、分件、材质、场景组织和交付要求整理成建模任务包。", "output": "三维制作任务，交由 Codex CLI 执行。"}, {"id": "model", "name": "Codex CLI", "role": "执行三维制作任务", "tag": "GPT-6 ASTRA", "kind": "agent", "input": "Claude Code 派发的建模任务与参考图。", "process": "拆解 Blender 操作步骤，通过 MCP 调用工具；根据回传的场景信息和预览定位问题并调整。", "output": "场景操作、阶段预览和执行记录。"}, {"id": "mcp", "name": "MCP 连接", "role": "把任务传给 Blender", "tag": "TOOL CONNECTION", "kind": "tool", "input": "Codex 发出的工具调用。", "process": "连接 Agent 与 Blender，传递建模或脚本指令，并将软件执行结果回传给 Codex。", "output": "可回查的操作结果、场景状态与预览。"}, {"id": "blender", "name": "Blender", "role": "建模 · 材质 · 输出", "tag": "3D PRODUCTION", "kind": "tool", "input": "已确认的参考图及制作指令。", "process": "按参考制作形体与结构，配置材质，检查比例和连接关系；保留可编辑工程，再输出所需文件。", "output": "模型、预览图、可编辑工程与导出文件。"}, {"id": "review", "name": "我", "role": "查看成果 · 确认交付", "tag": "FINAL REVIEW", "kind": "human", "input": "经 Codex 回报、由 Claude Code 汇总的模型预览与交付清单。", "process": "对照需求检查效果与完整性，提出修改意见；由 Claude Code 继续调度修订，直到满足本次交付要求。", "output": "确认后的三维资产，连同过程记录归档。"}]</script>
 </section>
 
@@ -138,10 +152,10 @@
         <video style="background:#05080f" width="1920" height="1080" class="bgv" loop playsinline preload="none" poster="assets/video/nereid-v56-poster.webp" data-src="assets/video/nereid-v56" data-mobile-resolution="720" aria-label="NEREID 深海科研站 V56 展示短片"></video>
         <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
       </div>
-      
+
       <div class="shade"></div>
-      
-      
+
+
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Remotion</div><div><span>DELIVERY</span>9 个 4K 机位 · 1080P 展示短片</div><div><span>MY ROLE</span>参考拆解、AI 辅助场景迭代、材质与灯光判断、多机位核对及后期验收。</div></div>
     </div>
   </section>
@@ -193,7 +207,22 @@
   </section>
 
   <section class="block wrap nereid-how"><div class="reveal"><p class="eyebrow">How I work</p><p class="how-summary">先拆解需求，以 AI 协作推进制作；通过多机位对照检查结果，并保留版本与交付记录。</p></div></section>
-</article>
+<article class="practice-case wrap" id="workflow-case" aria-labelledby="workflow-title">
+    <div class="practice-heading reveal"><p class="eyebrow">Problem → Decision → Review</p><h3 id="workflow-title">NEREID：流畅度处理，不能破坏结构。</h3><p>一次 AI 协作后期任务的方案筛选与效果检查。依据既有 V56 制作约定、失败试验与终检记录整理。</p></div>
+    <ol class="case-steps">
+      <li class="reveal"><span>01 / 发现问题</span><h4>补帧引入新增形变</h4><p>与相邻原帧对照后，发现显示器边框、椅子和门框等结构被拉扯。六个镜头均有需要回查的位置。</p></li>
+      <li class="reveal"><span>02 / 拆解需求</span><h4>把“更流畅”变成约束</h4><p>保留原音乐与拍点；将结构完整、镜头边界、显色起止和输出规格分别列为检查项。</p></li>
+      <li class="reveal"><span>03 / 调整方案</span><h4>保留干净原帧</h4><p>弃用形变补帧，沿用原始 30fps 画面，以轻量后期衔接镜头；限定 9 秒开始中心显色。</p></li>
+      <li class="reveal"><span>04 / 核对结果</span><h4>回到同一位置复查</h4><p>逐帧回归六处旧问题；终检记录显示新增伪影已消失，原 AAC 音乐码流与时间戳保持一致。</p></li>
+    </ol>
+    <figure class="case-evidence reveal">
+      <a href="assets/evidence/nereid-interpolation-comparison.jpg" target="_blank" rel="noopener" aria-label="放大查看原帧与失败补帧对照"><img src="assets/evidence/nereid-interpolation-comparison.jpg" width="1920" height="392" alt="左为前一原帧，中为出现拉扯的失败补帧，右为后一原帧" loading="lazy" decoding="async" style="background:#0b1018 url(data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABQAwCdASoYAAUAPyV6tVGuJ6UisAgBwCSJaQAARzn+CYwsAAD7EJgX+g7XUdIT9Qy3tT7XbAJ3FEYji5AAAA==) center/contain no-repeat"></a>
+      <figcaption><b>失败试验的三帧对照</b><span>左右为相邻原帧，中间为被弃用的补帧。重点看显示器与椅子的结构变化。点击图片可放大。</span></figcaption>
+    </figure>
+    <div class="case-results reveal"><span><b>6 处</b>旧伪影位置完成回归</span><span><b>30 fps / 490 帧</b>正式输出规格</span><span><b>原音轨一致</b>逐包与时间戳核对</span></div>
+    <p class="case-links reveal"><a href="assets/evidence/nereid-six-checks.jpg" target="_blank" rel="noopener">查看六处回归对照 ↗</a><a href="assets/evidence/nereid-v56-review.txt" target="_blank" rel="noopener">查看验收摘要 ↗</a><a data-project-jump href="#nereid">返回深海作品 ↗</a></p>
+
+  </article></article>
 
 <!-- 02 AK-50 -->
 <article class="project" id="ak50">
@@ -204,10 +233,10 @@
         <video style="background:#0b1018 url(data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoYAA4APu1yrU+pp6QiMAgBMB2JZQC7AB6WS1Arzoye8sAA/vK0uF0X0acBUQJ4s3vMXQQ4Hc6HR42AFU1Thddq6yFEzQyTOzq2k636bG8NDz3ewT9Xr6zGSHwAAA==) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/ak50-poster.webp" data-src="assets/video/ak50" data-preview-version="20261031-overview" aria-label="AK-50 拆装动画"></video>
         <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
       </div>
-      
+
       <div class="shade"></div>
-      
-      
+
+
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Substance Painter · Python</div><div><span>DELIVERY</span>8 张 4K 静帧 · 28 秒 4K 拆装动画</div><div><span>MY ROLE</span>结构分件、AI 辅助脚本迭代、PBR 材质、拆装与运镜编排，以及运动过程检查。</div></div>
     </div>
   </section>
@@ -273,66 +302,22 @@
     <div class="reveal"><p class="eyebrow">Detail fix</p><p>倍镜小拨杆根部原来是一条长底板接上去，看起来是贴的；改成曲面底座，让拨杆像是从机件里长出来的。</p></div>
   </section>
 </article>
+<article class="project" id="monkey">
+      <header class="project-heading"><div class="num">03</div><div class="title"><h2>MONKEY<br>SCULPTURE</h2><p>猴头｜纯手工雕刻 · 个人雕刻作品 · 2026.09</p></div></header>
+      <section class="block wrap monkey-showcase"><p class="eyebrow">HAND SCULPTED · FRONT / CLAY</p>
+        <div class="monkey-grid"><figure class="reveal"><a href="assets/img/monkey-front-2400.webp" target="_blank" rel="noopener"><img src="assets/img/monkey-front-1600.webp" srcset="assets/img/monkey-front-800.webp 800w, assets/img/monkey-front-1600.webp 1600w, assets/img/monkey-front-2400.webp 2400w" sizes="(min-width:900px) 43vw, calc(100vw - 40px)" width="2400" height="1800" alt="猴头纯手工雕刻，无毛发正交正视白模" loading="lazy" decoding="async" style="background:#0b1018 url(data:image/webp;base64,UklGRsQAAABXRUJQVlA4ILgAAACQBQCdASocABUAPmEqkEWkIqGYDAQAQAYEs4ACiA9yBBwJvW815m30PXj5wJuNkhuOpEusAAD+/m4bnB9PRpUjyjSXWadP+qQJ+opnUHKBj4NmQTy699p7Jbifef0TuOPAkaECA2Buu+PUO3LYXzZRJO9hLYjter+QtXPGjDL5B664L5kXjRNZoLx+BKdAc6vTHqj0MWNh3FwpyeIVhdk/RssxSKKbim+eAgPcKm+gmG5uijiYAAAA) center/contain no-repeat"></a><figcaption><b>01 / 正视白模</b><span>完整头部形体</span></figcaption></figure><figure class="reveal"><a href="assets/img/monkey-detail-2400.webp" target="_blank" rel="noopener"><img src="assets/img/monkey-detail-1600.webp" srcset="assets/img/monkey-detail-800.webp 800w, assets/img/monkey-detail-1600.webp 1600w, assets/img/monkey-detail-2400.webp 2400w" sizes="(min-width:900px) 43vw, calc(100vw - 40px)" width="2400" height="1800" alt="猴头纯手工雕刻，同一正视方向的面部局部白模" loading="lazy" decoding="async" style="background:#0b1018 url(data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAADQBQCdASocABUAPmEokUWkIqGYDAQAQAYEtIBhQnm1t6aNpa8AUTn06m8ckAkjxP1p9QW2ABUQAP7+bxw/kfI71UTDJ8qJXjn57GCn6w9DZWcbNFxce78kB24TxMjIka/eT7J9iHbcMcn6gWLuOOKpLhkzhCozCFt+lufNSJttL4GjnFASK2V7xF5vfVQSBL8f7ef2WnmEl1CZ+tl1jefxkAp+M26iJgIbdQWK97LlVPkqDb+EZiBk8/bQlt5M1PYWm0+S7qsn5WSLRtGJyJyH/t8WL7Ecm6/fT2Gaexy2UEHyCC70cN06+OIBoAAA) center/contain no-repeat"></a><figcaption><b>02 / 面部局部</b><span>眼眶、鼻口与牙齿</span></figcaption></figure></div>
+        <div class="monkey-copy"><div><h3>纯手工雕刻</h3><p>本人手工完成猴头雕刻，围绕头部比例、五官体积与面部转折整理形体。</p></div><div><h3>用白模看清形体</h3><p>无毛发正视白模；从现有雕刻工程提取完整形体与面部局部。</p></div></div>
+        <p class="monkey-source-note">Blender / ZBrush · 展示图由现有雕刻工程提取，保留原始工程与雕刻细节。</p>
+      </section></article>
+
+
+
+
+
 
 <!-- 03 工作室 -->
-<article class="project" id="studio">
-  <section class="opener scene">
-    <div class="stage">
-<header class="project-heading"><div class="num">03</div><div class="title"><h2>FANTASY<br>CHARACTER STUDIO</h2><p>幻想风角色设计工作室 · 私单（个人接单）· 2026.10</p></div></header>
-      <div class="frame"><img width="1600" height="900" src="assets/img/studio-01-1600.webp"
-        srcset="assets/img/studio-01-800.webp 800w, assets/img/studio-01-1600.webp 1600w, assets/img/studio-01-2400.webp 2400w"
-        sizes="100vw" alt="幻想风角色设计工作室" loading="lazy" style="background:#0b1018 url(data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JZACdABbQ+32ee24rKGc24ADs/uoQY+jjXCD/iUmsQLOUDbx9NpGk0zRVLof5NxelOn12MHivIQVLX8C3ejXAX1BvMPI/8quOstVvd2Cg7M8XQU1DBCIsJm6Y43Ol2VX2hoeL/dFns95i32YZyj2/c51xSV8n1AwAENlQjE+AAA==) center/cover no-repeat;object-position:58% 50%"></div>
-      <div class="shade"></div>
-      
-      
-      <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Three.js</div><div><span>DELIVERY</span>7 个机位 · 4K 静帧 · 客户修订交付</div><div><span>MY ROLE</span>客户需求整理、AI 辅助空间与陈设调整、材质灯光统一，以及多机位交付检查。</div></div>
-    </div>
-  </section>
-<section class="project-workflow wrap" id="studio-workflow"><div class="workflow-heading reveal"><p class="eyebrow">AI-assisted production · 制作流程</p><h3>把客户反馈，转成有对象、有范围的修改单。</h3><p>从参考中拆出拱廊、窗墙、功能区和陈设关系，先用白模确认比例。随后将每轮反馈整理为可执行任务，以 AI 辅助脚本调整指定对象，并在七个固定机位中核对连带影响。</p></div><dl class="workflow-tools reveal"><div><dt>AI 协作 / Blender Python</dt><dd>需求整理、对象级修改与批量机位检查</dd></div><div><dt>Blender / Cycles</dt><dd>建筑与家具整合、材质、暖光和正式出图</dd></div><div><dt>Three.js / GLB</dt><dd>早期空间预览、分类检查与相机观察</dd></div><div><dt>版本与核查脚本</dt><dd>记录修改对象，复查材质、变换与交付文件</dd></div></dl><ol class="workflow-steps"><li class="reveal"><span>01 / 对齐</span><h4>先确认白模与机位</h4><p>将客户参考拆成比例、建筑、工作区与陈设要求，先确认空间关系，再进入材质和细节阶段。</p></li><li class="reveal"><span>02 / 执行</span><h4>每轮只改清楚的范围</h4><p>将反馈落到对象名称与具体目标，辅助脚本处理尺寸、排列、连接和材质；保护已确认的机位与内容。</p></li><li class="reveal"><span>03 / 交付</span><h4>同一场景统一回查</h4><p>从固定视角复查家具支撑、陈设密度、墙栏连接和暖光效果，确认后输出七机位 4K 成品。</p></li></ol></section>
 
-  <section class="hgallery scene">
-    <div class="stage">
-      <div class="head"><p class="eyebrow">Details · 细节</p><h3>七个正式机位共用一个场景</h3></div>
-      <div class="track">
-        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAwBACdASoYAA4APu1iqU2ppaOiMAgBMB2JQBYeVgHYAGbldlSJqtOGzggA/rxkkq+mzsm6O/UfEiwhyOYs3vHtHo2yHH16WBl7EIQCa3hx0KNimjBghEpgkit+a7O5s16Zi0LsoOeMR+69bnguTS7pNLGk9wt7eCuanSb3XAKwTALAmyrzJJTiUpGg7BRygulV0HjTUvE1eFf/4zLL5fT+e3NqKamBve+ygAAA) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-02-1600.webp" srcset="assets/img/studio-02-800.webp 800w, assets/img/studio-02-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="完整布局" loading="lazy"><figcaption><b>02</b>完整布局与家具</figcaption></figure>
-        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JQBOgAxuo0oibmqiUNGFrWAD+41vSjr45AxRhrqWbkyy/9EDpyPvQrf/DGRk5cavafIi6SSTpjjnJs5CD5hWnrFNT8zhpHLJZUmh0RdNyStf81NtZFx6OALr3QU8Zu5SGAmgDzQ7oip5kXR3+it3GVvKqHKZY6tbcmsoI2zMfy9VB/GAAAA==) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-04-1600.webp" srcset="assets/img/studio-04-800.webp 800w, assets/img/studio-04-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="头架与缝纫区" loading="lazy"><figcaption><b>04</b>头架与缝纫区</figcaption></figure>
-        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwAwCdASoYAA4APu1kqU4ppaOiMAgBMB2JQBOgAloI2uzEmJ6iVgD90kAgCThByAb1DATy1F2uwMLz5cdZy2ZJEx0p40pIBEjlMKl5GFUrXnkiEEP4+jA+lDPXc+Mz7RL0PcNaIb6ABFe2xQLO5AqPAsnI9OFpehF39VOIEdKMOxAPuhGVBmEQcBJKk7/Ulw4AXWyzAAA=) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-07-1600.webp" srcset="assets/img/studio-07-800.webp 800w, assets/img/studio-07-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="水晶吊灯近景" loading="lazy"><figcaption><b>07</b>水晶吊灯近景</figcaption></figure>
-      </div>
-    </div>
-  </section>
 
-  <section class="steps scene" style="--ar:16/9">
-    <div class="stage">
-      <div class="head"><p class="eyebrow">Blockout → Final · 白模到定稿</p></div>
-      <div class="frames">
-        <img style="background:#0b1018 url(data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABwAwCdASoYAA4APu1qrU8ppiQiMAgBMB2JaQAARzoAHLCKuIAA/sOJf2G36FkJuFnN1pZLvWR82O1NkYMGfNQNK7EDhT/4J6H+AA==) center/cover no-repeat" width="1600" height="900" class="frame" src="assets/img/studio-step1-1600.webp" srcset="assets/img/studio-step1-800.webp 800w, assets/img/studio-step1-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="白模" loading="lazy">
-        <img style="background:#0b1018 url(data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoYAA0APu1Ct1apoqakGAEwHYlpAABc3WlsAPmg9toAAP3L/51g71N4X5jc2xdACXMGPUquBQphePRLszy7YfkXjSaXwOgQAAA=) center/cover no-repeat" width="1600" height="886" class="frame" src="assets/img/studio-step2-1600.webp" srcset="assets/img/studio-step2-800.webp 800w, assets/img/studio-step2-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="家具布局" loading="lazy">
-        <img style="background:#0b1018 url(data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwAwCdASoYAA0APu1krU6ppaSiMAgBMB2JZwABHqirpW13HmAA/sM7g+3r+w/8RkOcVgFXB0ivHirB66LWqpyrCCn9cUKYpdVIKCHozAZj9f1byvtZ2sgDOV/VW0j+9v48DX3LBsVBaZGGeIFAAA==) center/cover no-repeat" width="1600" height="886" class="frame" src="assets/img/studio-step3-1600.webp" srcset="assets/img/studio-step3-800.webp 800w, assets/img/studio-step3-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="材质" loading="lazy">
-        <img style="background:#0b1018 url(data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBACdASoYAA4APu1iqU2ppaQiMAgBMB2JZACdAYwck0Xf/c5F9PYtg1kAAOz+6ezQFX9OQdS4tJ9T748e5DxMkK+dQiCjipA/TzH3rnpGVnEi0I+7vRrgL6g3mHke5CywlBPl/T+XZnl6vUoAnDMzeQWTurCrGsbXuqHewLXcPWXLPAf3bPvduf8xqKWd8sTYWRyoRifAAA==) center/cover no-repeat" width="1600" height="900" class="frame" src="assets/img/studio-step4-1600.webp" srcset="assets/img/studio-step4-800.webp 800w, assets/img/studio-step4-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="定稿" loading="lazy">
-      </div>
-      <ol class="captions">
-        <li><b>01 · 10.18</b><h3>白模与比例</h3><p>先用白模把空间比例和机位定下来。</p></li>
-        <li><b>02 · 10.19</b><h3>家具布局</h3><p>按客户参考摆放桌椅、头架、展示柜和设备。</p></li>
-        <li><b>03 · 10.20</b><h3>墙地旗材质</h3><p>墙面、地砖、旗帜和家具上材质，统一色调。</p></li>
-        <li><b>04 · 10.24 · FINAL</b><h3>暖光定稿</h3><p>暖光斜射，六头陈列，桌旗前后对称；V08 到 V38 共 30 余版。</p></li>
-      </ol>
-      <div class="dots"><i></i><i></i><i></i><i></i></div>
-    </div>
-  </section>
-
-  <section class="block wrap">
-    <div class="reveal"><p class="eyebrow">Client revisions</p><h3>将客户反馈转换为对象级修改单</h3>
-      <ul>
-        <li>把尺寸、间距、支撑与陈列目标写成明确任务，辅助脚本调整指定对象</li>
-        <li>针对墙栏连接、旗帜、桌面和远景逐项修订，核对原有材质与构图</li>
-        <li>保护已确认机位；同一批视角回查，避免局部修改影响其他画面</li>
-      </ul>
-      <p class="fine">角色头模为网络资源，非本人制作；品牌标识归客户所有。</p>
-    </div>
-  </section>
-</article>
-
-<!-- 04 聚光灯精灵 -->
 <article class="project" id="sprite">
   <section class="opener scene">
     <div class="stage">
@@ -341,10 +326,10 @@
         <video style="background:#0b1018 url(data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAwAwCdASoYAA4APu1iqU2ppaQiMAgBMB2JaQAAetChog8AAP7wt0i2AmHU79MbDxngLzeMAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/sprite-poster.webp" data-src="assets/video/sprite" aria-label="聚光灯精灵展示短片"></video>
         <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
       </div>
-      
+
       <div class="shade"></div>
-      
-      
+
+
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Remotion / React</div><div><span>DELIVERY</span>原创 IP · 机械绑定与 8 种表情 · 4K 卡点短片</div><div><span>MY ROLE</span>角色结构设定、AI 辅助建模与绑定迭代、动作检查、镜头组织及后期节奏编排。</div></div>
     </div>
   </section>
@@ -402,19 +387,78 @@
     </div>
   </section>
 </article>
+<article class="project" id="studio">
+  <section class="opener scene">
+    <div class="stage">
+<header class="project-heading"><div class="num">05</div><div class="title"><h2>FANTASY<br>CHARACTER STUDIO</h2><p>幻想风角色设计工作室 · 私单（个人接单）· 2026.10</p></div></header>
+      <div class="frame"><img width="1600" height="900" src="assets/img/studio-01-1600.webp"
+        srcset="assets/img/studio-01-800.webp 800w, assets/img/studio-01-1600.webp 1600w, assets/img/studio-01-2400.webp 2400w"
+        sizes="100vw" alt="幻想风角色设计工作室" loading="lazy" style="background:#0b1018 url(data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAAAQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JZACdABbQ+32ee24rKGc24ADs/uoQY+jjXCD/iUmsQLOUDbx9NpGk0zRVLof5NxelOn12MHivIQVLX8C3ejXAX1BvMPI/8quOstVvd2Cg7M8XQU1DBCIsJm6Y43Ol2VX2hoeL/dFns95i32YZyj2/c51xSV8n1AwAENlQjE+AAA==) center/cover no-repeat;object-position:58% 50%"></div>
+      <div class="shade"></div>
+
+
+      <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · Three.js</div><div><span>DELIVERY</span>7 个机位 · 4K 静帧 · 客户修订交付</div><div><span>MY ROLE</span>客户需求整理、AI 辅助空间与陈设调整、材质灯光统一，以及多机位交付检查。</div></div>
+    </div>
+  </section>
+<section class="project-workflow wrap" id="studio-workflow"><div class="workflow-heading reveal"><p class="eyebrow">AI-assisted production · 制作流程</p><h3>把客户反馈，转成有对象、有范围的修改单。</h3><p>从参考中拆出拱廊、窗墙、功能区和陈设关系，先用白模确认比例。随后将每轮反馈整理为可执行任务，以 AI 辅助脚本调整指定对象，并在七个固定机位中核对连带影响。</p></div><dl class="workflow-tools reveal"><div><dt>AI 协作 / Blender Python</dt><dd>需求整理、对象级修改与批量机位检查</dd></div><div><dt>Blender / Cycles</dt><dd>建筑与家具整合、材质、暖光和正式出图</dd></div><div><dt>Three.js / GLB</dt><dd>早期空间预览、分类检查与相机观察</dd></div><div><dt>版本与核查脚本</dt><dd>记录修改对象，复查材质、变换与交付文件</dd></div></dl><ol class="workflow-steps"><li class="reveal"><span>01 / 对齐</span><h4>先确认白模与机位</h4><p>将客户参考拆成比例、建筑、工作区与陈设要求，先确认空间关系，再进入材质和细节阶段。</p></li><li class="reveal"><span>02 / 执行</span><h4>每轮只改清楚的范围</h4><p>将反馈落到对象名称与具体目标，辅助脚本处理尺寸、排列、连接和材质；保护已确认的机位与内容。</p></li><li class="reveal"><span>03 / 交付</span><h4>同一场景统一回查</h4><p>从固定视角复查家具支撑、陈设密度、墙栏连接和暖光效果，确认后输出七机位 4K 成品。</p></li></ol></section>
+
+  <section class="hgallery scene">
+    <div class="stage">
+      <div class="head"><p class="eyebrow">Details · 细节</p><h3>七个正式机位共用一个场景</h3></div>
+      <div class="track">
+        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAAAwBACdASoYAA4APu1iqU2ppaOiMAgBMB2JQBYeVgHYAGbldlSJqtOGzggA/rxkkq+mzsm6O/UfEiwhyOYs3vHtHo2yHH16WBl7EIQCa3hx0KNimjBghEpgkit+a7O5s16Zi0LsoOeMR+69bnguTS7pNLGk9wt7eCuanSb3XAKwTALAmyrzJJTiUpGg7BRygulV0HjTUvE1eFf/4zLL5fT+e3NqKamBve+ygAAA) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-02-1600.webp" srcset="assets/img/studio-02-800.webp 800w, assets/img/studio-02-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="完整布局" loading="lazy"><figcaption><b>02</b>完整布局与家具</figcaption></figure>
+        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBACdASoYAA4APu1iqU2ppaOiMAgBMB2JQBOgAxuo0oibmqiUNGFrWAD+41vSjr45AxRhrqWbkyy/9EDpyPvQrf/DGRk5cavafIi6SSTpjjnJs5CD5hWnrFNT8zhpHLJZUmh0RdNyStf81NtZFx6OALr3QU8Zu5SGAmgDzQ7oip5kXR3+it3GVvKqHKZY6tbcmsoI2zMfy9VB/GAAAA==) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-04-1600.webp" srcset="assets/img/studio-04-800.webp 800w, assets/img/studio-04-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="头架与缝纫区" loading="lazy"><figcaption><b>04</b>头架与缝纫区</figcaption></figure>
+        <figure><img style="background:#0b1018 url(data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACwAwCdASoYAA4APu1kqU4ppaOiMAgBMB2JQBOgAloI2uzEmJ6iVgD90kAgCThByAb1DATy1F2uwMLz5cdZy2ZJEx0p40pIBEjlMKl5GFUrXnkiEEP4+jA+lDPXc+Mz7RL0PcNaIb6ABFe2xQLO5AqPAsnI9OFpehF39VOIEdKMOxAPuhGVBmEQcBJKk7/Ulw4AXWyzAAA=) center/cover no-repeat" width="1600" height="900" src="assets/img/studio-07-1600.webp" srcset="assets/img/studio-07-800.webp 800w, assets/img/studio-07-1600.webp 1600w" sizes="(min-width: 900px) 62vw, 84vw" alt="水晶吊灯近景" loading="lazy"><figcaption><b>07</b>水晶吊灯近景</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps scene" style="--ar:16/9">
+    <div class="stage">
+      <div class="head"><p class="eyebrow">Blockout → Final · 白模到定稿</p></div>
+      <div class="frames">
+        <img style="background:#0b1018 url(data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAABwAwCdASoYAA4APu1qrU8ppiQiMAgBMB2JaQAARzoAHLCKuIAA/sOJf2G36FkJuFnN1pZLvWR82O1NkYMGfNQNK7EDhT/4J6H+AA==) center/cover no-repeat" width="1600" height="900" class="frame" src="assets/img/studio-step1-1600.webp" srcset="assets/img/studio-step1-800.webp 800w, assets/img/studio-step1-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="白模" loading="lazy">
+        <img style="background:#0b1018 url(data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAACQAwCdASoYAA0APu1Ct1apoqakGAEwHYlpAABc3WlsAPmg9toAAP3L/51g71N4X5jc2xdACXMGPUquBQphePRLszy7YfkXjSaXwOgQAAA=) center/cover no-repeat" width="1600" height="886" class="frame" src="assets/img/studio-step2-1600.webp" srcset="assets/img/studio-step2-800.webp 800w, assets/img/studio-step2-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="家具布局" loading="lazy">
+        <img style="background:#0b1018 url(data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABwAwCdASoYAA0APu1krU6ppaSiMAgBMB2JZwABHqirpW13HmAA/sM7g+3r+w/8RkOcVgFXB0ivHirB66LWqpyrCCn9cUKYpdVIKCHozAZj9f1byvtZ2sgDOV/VW0j+9v48DX3LBsVBaZGGeIFAAA==) center/cover no-repeat" width="1600" height="886" class="frame" src="assets/img/studio-step3-1600.webp" srcset="assets/img/studio-step3-800.webp 800w, assets/img/studio-step3-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="材质" loading="lazy">
+        <img style="background:#0b1018 url(data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBACdASoYAA4APu1iqU2ppaQiMAgBMB2JZACdAYwck0Xf/c5F9PYtg1kAAOz+6ezQFX9OQdS4tJ9T748e5DxMkK+dQiCjipA/TzH3rnpGVnEi0I+7vRrgL6g3mHke5CywlBPl/T+XZnl6vUoAnDMzeQWTurCrGsbXuqHewLXcPWXLPAf3bPvduf8xqKWd8sTYWRyoRifAAA==) center/cover no-repeat" width="1600" height="900" class="frame" src="assets/img/studio-step4-1600.webp" srcset="assets/img/studio-step4-800.webp 800w, assets/img/studio-step4-1600.webp 1600w" sizes="(min-width: 900px) 70vw, 92vw" alt="定稿" loading="lazy">
+      </div>
+      <ol class="captions">
+        <li><b>01 · 10.18</b><h3>白模与比例</h3><p>先用白模把空间比例和机位定下来。</p></li>
+        <li><b>02 · 10.19</b><h3>家具布局</h3><p>按客户参考摆放桌椅、头架、展示柜和设备。</p></li>
+        <li><b>03 · 10.20</b><h3>墙地旗材质</h3><p>墙面、地砖、旗帜和家具上材质，统一色调。</p></li>
+        <li><b>04 · 10.24 · FINAL</b><h3>暖光定稿</h3><p>暖光斜射，六头陈列，桌旗前后对称；V08 到 V38 共 30 余版。</p></li>
+      </ol>
+      <div class="dots"><i></i><i></i><i></i><i></i></div>
+    </div>
+  </section>
+
+  <section class="block wrap">
+    <div class="reveal"><p class="eyebrow">Client revisions</p><h3>将客户反馈转换为对象级修改单</h3>
+      <ul>
+        <li>把尺寸、间距、支撑与陈列目标写成明确任务，辅助脚本调整指定对象</li>
+        <li>针对墙栏连接、旗帜、桌面和远景逐项修订，核对原有材质与构图</li>
+        <li>保护已确认机位；同一批视角回查，避免局部修改影响其他画面</li>
+      </ul>
+      <p class="fine">角色头模为网络资源，非本人制作；品牌标识归客户所有。</p>
+    </div>
+  </section>
+</article>
+
+<!-- 04 聚光灯精灵 -->
+
 
 <!-- 05 办公室 -->
 <article class="project" id="office">
   <section class="opener scene">
     <div class="stage">
-<header class="project-heading"><div class="num">05</div><div class="title"><h2>NIGHT<br>OFFICE</h2><p>夜间室内办公室 · 个人项目 · 2026.10</p></div></header>
+<header class="project-heading"><div class="num">06</div><div class="title"><h2>NIGHT<br>OFFICE</h2><p>夜间室内办公室 · 个人项目 · 2026.10</p></div></header>
       <div class="frame is-video">
         <video style="background:#0b1018 url(data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABQAwCdASoYAA4APu1iqk2ppaQiMAgBMB2JaQAAetETwKyBgAD+8Fw4frMV7ZDBqWKmmz+G14uerycKrvDATkVhS0unbLxEyjHJI8+B7Q03m4UBTQtZJyAAAAA=) center/cover no-repeat" width="1920" height="1080" class="bgv" muted loop playsinline preload="none" poster="assets/video/office-poster.webp" data-src="assets/video/office" aria-label="夜间办公室运镜动画"></video>
         <button class="glass loading" type="button" disabled aria-live="polite"><i aria-hidden="true"></i><span>视频加载中，请稍等</span></button>
       </div>
       <div class="shade"></div>
-      
-      
+
+
       <div class="info glass"><div><span>SOFTWARE</span>Blender / Cycles · Python · FFmpeg</div><div><span>DELIVERY</span>3 张 4K 静帧 · 夜景运镜 · 白模与材质分层输出</div><div><span>MY ROLE</span>参考与镜头拆解、AI 辅助场景调整、夜景灯光迭代，以及模型／材质／灯光分层核查。</div></div>
     </div>
   </section>
@@ -502,22 +546,7 @@
     </article>
   </div>
 
-  <article class="practice-case" id="workflow-case" aria-labelledby="workflow-title">
-    <div class="practice-heading reveal"><p class="eyebrow">Problem → Decision → Review</p><h3 id="workflow-title">NEREID：流畅度处理，不能破坏结构。</h3><p>一次 AI 协作后期任务的方案筛选与效果检查。依据既有 V56 制作约定、失败试验与终检记录整理。</p></div>
-    <ol class="case-steps">
-      <li class="reveal"><span>01 / 发现问题</span><h4>补帧引入新增形变</h4><p>与相邻原帧对照后，发现显示器边框、椅子和门框等结构被拉扯。六个镜头均有需要回查的位置。</p></li>
-      <li class="reveal"><span>02 / 拆解需求</span><h4>把“更流畅”变成约束</h4><p>保留原音乐与拍点；将结构完整、镜头边界、显色起止和输出规格分别列为检查项。</p></li>
-      <li class="reveal"><span>03 / 调整方案</span><h4>保留干净原帧</h4><p>弃用形变补帧，沿用原始 30fps 画面，以轻量后期衔接镜头；限定 9 秒开始中心显色。</p></li>
-      <li class="reveal"><span>04 / 核对结果</span><h4>回到同一位置复查</h4><p>逐帧回归六处旧问题；终检记录显示新增伪影已消失，原 AAC 音乐码流与时间戳保持一致。</p></li>
-    </ol>
-    <figure class="case-evidence reveal">
-      <a href="assets/evidence/nereid-interpolation-comparison.jpg" target="_blank" rel="noopener" aria-label="放大查看原帧与失败补帧对照"><img src="assets/evidence/nereid-interpolation-comparison.jpg" width="1920" height="392" alt="左为前一原帧，中为出现拉扯的失败补帧，右为后一原帧" loading="lazy" decoding="async" style="background:#0b1018 url(data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABQAwCdASoYAAUAPyV6tVGuJ6UisAgBwCSJaQAARzn+CYwsAAD7EJgX+g7XUdIT9Qy3tT7XbAJ3FEYji5AAAA==) center/contain no-repeat"></a>
-      <figcaption><b>失败试验的三帧对照</b><span>左右为相邻原帧，中间为被弃用的补帧。重点看显示器与椅子的结构变化。点击图片可放大。</span></figcaption>
-    </figure>
-    <div class="case-results reveal"><span><b>6 处</b>旧伪影位置完成回归</span><span><b>30 fps / 490 帧</b>正式输出规格</span><span><b>原音轨一致</b>逐包与时间戳核对</span></div>
-    <p class="case-links reveal"><a href="assets/evidence/nereid-six-checks.jpg" target="_blank" rel="noopener">查看六处回归对照 ↗</a><a href="assets/evidence/nereid-v56-review.txt" target="_blank" rel="noopener">查看验收摘要 ↗</a><a data-project-jump href="#nereid">返回深海作品 ↗</a></p>
-    
-  </article>
+
 
   <article class="skill-refinement glass reveal" id="skill-refinement" aria-labelledby="refinement-title">
     <div class="practice-heading"><p class="eyebrow">Practice → Skill Rules</p><h3 id="refinement-title">在项目中检查效果，持续完善镜头规则。</h3><p>在实际制作中检查镜头卡的应用效果，将发现的问题、修订方法和复查结果补充到检查规则中。</p></div>
@@ -528,8 +557,12 @@
     </dl>
     <a class="refinement-link" href="https://github.com/KKKKKennys/camera-shot-library/blob/main/references/review.md" target="_blank" rel="noopener noreferrer">查看仓库中的镜头检查清单 ↗</a>
   </article>
-  <p class="skill-footnote reveal">作者与维护：李铿 Kenny · 两项 Skill 均采用 MIT 许可 · 指令与文档可在仓库查看</p>
-</section>
+  <p class="skill-footnote reveal">作者与维护：李铿 Kenny · 各项目的许可、指令与使用说明可在仓库查看</p>
+<article class="technical-case glass reveal" id="asset-plan-case"><p class="eyebrow">EXISTING FIX RECORD / AI 协作工具实践</p><h3>资产计划：路径别名与异常字段</h3>
+        <div class="technical-case-grid"><div><h4>问题与影响</h4><p>props/a.glb 与 ./props/a.glb 可指向同一文件；原比较逻辑可能漏报输出冲突。</p></div><div><h4>规则与实现变化</h4><p>统一相对路径的比较方式，同时用于重复输出与已有文件检查；异常字段返回错误信息。</p></div><div><h4>已有验证记录</h4><p>既有 PR 记录：23 项测试通过，432 次异常字段检查无异常退出。</p></div></div>
+        <p class="case-status">修复提案 · 草稿 PR，尚未合并。以上为既有代码与验证记录，本轮未重新运行技术实验；检查范围为计划或时间线数据。</p><p class="technical-case-links"><a href="https://github.com/KKKKKennys/blender-asset-pipeline/pull/1" target="_blank" rel="noopener">查看代码差异与记录 ↗</a><a href="#technical-practice">返回技术概览 ↑</a></p></article><article class="technical-case glass reveal" id="timeline-case"><p class="eyebrow">EXISTING FIX RECORD / AI 协作工具实践</p><h3>镜头工具：帧区间与双层对齐</h3>
+        <div class="technical-case-grid"><div><h4>问题与影响</h4><p>相同帧区间的排序可能触发类型错误，后续配对图层的异常字段可能漏检。</p></div><div><h4>规则与实现变化</h4><p>明确排序依据，逐层核对帧区间、画幅及帧率；保留同帧、同机位的检查要求。</p></div><div><h4>已有验证记录</h4><p>既有 PR 记录：26 项测试通过；10,000 次确定性异常输入检查无异常退出。</p></div></div>
+        <p class="case-status">修复提案 · 草稿 PR，尚未合并。以上为既有代码与验证记录，本轮未重新运行技术实验；检查范围为计划或时间线数据。</p><p class="technical-case-links"><a href="https://github.com/KKKKKennys/camera-shot-library/pull/1" target="_blank" rel="noopener">查看代码差异与记录 ↗</a><a href="#technical-practice">返回技术概览 ↑</a></p></article></section>
 
 <!-- 资料：站内项目与本版本简历，按需加载 PDF -->
 <section class="resources wrap" id="resources" aria-labelledby="resources-title">
@@ -546,14 +579,14 @@
     <div class="resource-copy">
       <p class="eyebrow">Take a closer look</p>
       <h2 id="resources-title">作品资料</h2>
-      <p class="resource-intro">完整项目在这里浏览，个人简历留一份慢慢看。</p>
+      <p class="resource-intro">作品集与个人简历，可下载保存或打印。</p>
       <div class="resource-panel" id="resource-files" role="group" aria-label="完整项目与个人简历">
         <div class="resource-panel-inner">
-          <a class="resource-download" href="#nereid" data-project-jump><span class="document-icon" aria-hidden="true">WEB</span><span><b>完整项目展示</b><small>5 个项目 · 站内完整拆解</small></span><i aria-hidden="true">↑</i></a>
-          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261108-scene-craft" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
+          <a class="resource-download" href="assets/files/likeng-lightai-portfolio.pdf?v=20261109-role16" download="深职大李铿技术美术作品集.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>作品集 PDF</b><small>27 页 · 六项作品与技术实践</small></span><i aria-hidden="true">↓</i></a>
+          <a class="resource-download" href="assets/files/likeng-lightai-resume.pdf?v=20261109-role16" download="李铿_个人简历.pdf"><span class="document-icon" aria-hidden="true">PDF</span><span><b>个人简历</b><small>两页简历 · PDF · 可打印</small></span><i aria-hidden="true">↓</i></a>
         </div>
       </div>
-      <p class="resource-hint">项目可直接在本站浏览；简历可下载保存或打印。</p>
+      <p class="resource-hint">作品可在本站浏览，PDF 便于保存、打印与转阅。</p>
     </div>
   </div>
 </section>
@@ -580,8 +613,8 @@
 <footer><span>李铿 KENNY — LIGHTAI PORTFOLIO 2026</span><div class="footer-actions"><a class="back-to-top" href="#top">回到顶部 ↑</a><a href="https://rareui.com" target="_blank" rel="noopener noreferrer">Interactions inspired by Rare UI ↗</a></div></footer>
 
 <script defer src="assets/main.js?v=20261102-nereid-v56"></script>
-<script defer src="assets/navigation.js?v=20261107-role10"></script>
-<script defer src="assets/lightai.js?v=20261107-role10"></script>
+<script defer src="assets/navigation.js?v=20261109-role16"></script>
+<script defer src="assets/lightai.js?v=20261109-role16"></script>
 <script defer src="assets/skill-pages.js?v=20261107-skills-v2"></script>
 <script defer src="assets/workflow-map.js?v=20261107-role10"></script>
 </body>
